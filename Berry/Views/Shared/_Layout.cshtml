@@ -1,0 +1,261 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Berry</title>
+    <link href="@Url.Content("~/img/logo.png")" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;subset=latin" rel="stylesheet">
+
+    <link href="@Url.Content("~/css/bootstrap.min.css")" rel="stylesheet">
+
+    <link href="@Url.Content("~/css/nifty.min.css")" rel="stylesheet">
+
+    <link href="@Url.Content("~/plugins/font-awesome/css/font-awesome.min.css")" rel="stylesheet">
+
+    @*<link href="@Url.Content("~/plugins/switchery/switchery.min.css")" rel="stylesheet">*@
+
+    <link href="@Url.Content("~/plugins/bootstrap-select/bootstrap-select.min.css")" rel="stylesheet">
+
+    <link href="@Url.Content("~/plugins/bootstrap-datepicker/bootstrap-datepicker.css")" rel="stylesheet" />
+
+    <link href="@Url.Content("~/css/Util.css")" rel="stylesheet" />
+
+    @*<link href="@Url.Content("~/css/paper.css")" rel="stylesheet" />*@
+
+    <link href="@Url.Content("~/plugins/datatables/media/css/dataTables.bootstrap.css")" rel="stylesheet" />
+
+    <link href="@Url.Content("~/css/loading.css")" rel="stylesheet" />
+
+    <link href="@Url.Content("~/css/themes/type-a/theme-ocean.min.css")" rel="stylesheet" />
+
+    <link href="@Url.Content("~/plugins/bootstrap-datepicker/bootstrap-datepicker.css")" rel="stylesheet" />
+
+    @RenderSection("styles", false)
+</head>
+<body>
+    <div id="container" class="effect mainnav-lg">
+        <header id="navbar">
+            <div id="navbar-container" class="boxed">
+
+                <!--Brand logo & name-->
+                <!--================================-->
+                <div class="navbar-header">
+                    @*<ul><li></li></ul>*@
+                    <a href="@Url.Action("Index","Home")" class="navbar-brand">
+                        <img src="@Url.Content("~/img/logo.png")" alt="Nifty Logo" class="brand-icon">
+                        <div class="brand-title">
+                            <span class="brand-text">Berry</span>
+                        </div>
+                    </a>
+                </div>
+                <!--================================-->
+                <!--End brand logo & name-->
+                <!--Navbar Dropdown-->
+                <!--================================-->
+                <div class="navbar-content clearfix">
+                    <ul class="nav navbar-top-links pull-left">
+
+                        <!--Navigation toogle button-->
+                        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                        <li class="tgl-menu-btn">
+                            <a class="mainnav-toggle" href="#">
+                                <i class="fa fa-navicon fa-lg"></i>
+                            </a>
+                        </li>
+                        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                        <!--End Navigation toogle button-->
+                        <!--Messages Dropdown-->
+                        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+
+
+                    </ul>
+                    <ul class="nav navbar-top-links pull-right">
+                        <li id="dropdown-user" class="dropdown">
+                            <!--Language selector-->
+                            <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                            <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                            <!--End language selector-->
+                            <!--User dropdown-->
+                            <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                            @if (HttpContext.Current.User.Identity.Name.Substring(0, 4) == "CSID")
+                            {
+                                <a href="#" data-toggle="dropdown" class="dropdown-toggle text-right">
+                                    <span class="pull-right">
+                                        <img class="img-circle img-user media-object" src="@Url.Content("~/img/av6.png")" alt="Profile Picture">
+                                    </span><div class="username hidden-xs">
+                                        @HttpContext.Current.User.Identity.Name.Substring(5)
+                                    </div>
+                                </a>
+                            }
+                        </li>
+                        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                        <!--End user dropdown-->
+
+                    </ul>
+                </div>
+                <!--================================-->
+                <!--End Navbar Dropdown-->
+
+            </div>
+        </header>
+
+
+        @RenderBody()
+
+        <!--MAIN NAVIGATION-->
+        <!--===================================================-->
+        <nav id="mainnav-container">
+            <div id="mainnav">
+
+                <div class="loader-wrapper" style="display:none">
+                    <div class="loader"></div>
+                    <div class="loader-section section-left"></div>
+                    <div class="loader-section section-right"></div>
+                </div>
+                <!--================================-->
+                <!--End shortcut buttons-->
+                <!--Menu-->
+                <!--================================-->
+                <div id="mainnav-menu-wrap">
+                    <div class="nano">
+                        <div class="nano-content">
+                            <ul id="mainnav-menu" class="list-group">
+
+                                <li class="list-divider"></li>
+
+                                <!--Category name-->
+                                <li class="list-header">Acciones</li>
+                                <!--Submenu-->
+                                <li data-name="Dashboard"><a href="@Url.Action("Index","Home")">Dashboard</a></li>
+                                <li data-name="Process">
+                                    <a href="~/">Weekly<i class="arrow"></i></a>
+                                    <ul class="collapse">
+                                        <li data-name="ProcessBerryGeneration">@Html.ActionLink("Correr Weekly", "BerryGenerator", "BerryGenerator")</li>
+                                        <li data-name="ProcessWeekClousure">@Html.ActionLink("Cerrar semana", "Close", "CanvWeek")</li>
+                                        <li data-name="ProcessWeekOpening">@Html.ActionLink("Abrir semana", "Open", "CanvWeek")</li>
+                                        <li data-name="ProcessWeekCreator">@Html.ActionLink("Crear semana", "Index", "BerryWeekCreator")</li>
+
+                                    </ul>
+                                </li>
+                                <li data-name="Reports">
+                                    <a href="~/">Reportes<i class="arrow"></i></a>
+                                    <ul class="collapse">
+                                        <li data-name="BillingReport">@Html.ActionLink("Finanzas", "Report", "BillingReport")</li>
+                                        <li data-name="UnitReport">@Html.ActionLink("Unidad", "Index", "UnitReport")</li>
+                                        <li data-name="RegionalReport">@Html.ActionLink("Regional", "Index", "RegionalReport")</li>
+                                    </ul>
+                                </li>
+                                <li data-name="CorrectTrans">@Html.ActionLink("Corregir Transacciones", "Index", "CorrectionTrans")</li>
+                                <li data-name="SalesReport">@Html.ActionLink("Reporte Ventas", "PayPeriod", "SalesReport")</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!--================================-->
+                <!--End menu-->
+
+            </div>
+        </nav>
+        <!--===================================================-->
+        <!--END MAIN NAVIGATION-->
+        <!--ASIDE-->
+        <!--===================================================-->
+        <aside id="aside-container">
+            <div id="aside">
+                <div class="nano">
+                    <div class="nano-content">
+
+                        <!--Nav tabs-->
+                        <!--================================-->
+                        <ul class="nav nav-tabs nav-justified">
+                            <li class="active">
+                                <a href="#demo-asd-tab-1" data-toggle="tab">
+                                    <i class="fa fa-comments"></i>
+                                    <span class="badge badge-purple">7</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#demo-asd-tab-2" data-toggle="tab">
+                                    <i class="fa fa-info-circle"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#demo-asd-tab-3" data-toggle="tab">
+                                    <i class="fa fa-wrench"></i>
+                                </a>
+                            </li>
+                        </ul>
+                        <!--================================-->
+                        <!--End nav tabs-->
+                        <!-- Tabs Content -->
+                        <!--================================-->
+
+                    </div>
+                </div>
+            </div>
+        </aside>
+        <!--===================================================-->
+        <!--END ASIDE-->
+        <!-- FOOTER -->
+        <!--===================================================-->
+        <footer id="footer">
+            <p class="pad-lft">Copyright® 2015 Caribe Servicios de Información, S. A. todos los derechos reservados.</p
+        </footer>
+        <!--===================================================-->
+        <!-- END FOOTER -->
+        <!-- SCROLL TOP BUTTON -->
+        <!--===================================================-->
+        <button id="scroll-top" class="btn"><i class="fa fa-chevron-up"></i></button>
+        <!--===================================================-->
+    </div>
+        
+    <script src="@Url.Content("~/js/jquery-2.2.1.min.js")"></script>
+
+    <script src="@Url.Content("~/js/bootstrap.min.js")"></script>
+
+    <script src="@Url.Content("~/js/nifty.min.js")"></script>
+
+    <script src="@Url.Content("~/plugins/bootbox/bootbox.min.js")"></script>
+    
+    <script src="@Url.Content("~/plugins/bootstrap-select/bootstrap-select.min.js")"></script>
+
+    <script src="@Url.Content("~/plugins/bootstrap-datepicker/bootstrap-datepicker.js")"></script>
+
+    <script src="@Url.Content("~/plugins/datatables/media/js/jquery.dataTables.js")"></script>
+
+    <script src="@Url.Content("~/plugins/datatables/media/js/dataTables.bootstrap.js")"></script>
+
+    <script src="@Url.Content("~/js/datepicker/moment.js")"></script>
+
+    <script src="@Url.Content("~/plugins/bootstrap-select/bootstrap-select.min.js")"></script>
+
+    <script src="@Url.Content("~/js/Utils.js")"></script>
+
+    <script src="@Url.Content("~/js/canvasjs.min.js")"></script>
+
+    <script src="@Url.Content("~/js/jquery.flot.min.js")"></script>
+
+    <script src="@Url.Content("~/js/jquery.flot.pie.min.js")"></script>
+
+    <script src="@Url.Content("~/js/jquery.flot.resize.min.js")"></script>
+
+    <script>
+
+        $(document).ready(function () {
+            $.get($('li[data-name="Axesa"]').data('url'), function (fullAccess) {
+                if (fullAccess == false) {
+                    $('li[data-name="Axesa"] ul').children().not('li[data-name="SalesReport"]').html('');
+                }
+            });
+        });
+
+    </script>
+
+    @RenderSection("scripts", false)
+
+
+
+</body>
+</html>

@@ -1,0 +1,197 @@
+﻿
+
+<script>
+    function justNumbers(e) {
+        var keynum = window.event ? window.event.keyCode : e.which;
+        if ((keynum == 8) || (keynum == 46))
+            return true;
+        return /\d/.test(String.fromCharCode(keynum));
+    }
+</script>
+
+
+<section class="featured">
+    <div class="boxed">
+        <!--CONTENT CONTAINER-->
+        <!--===================================================-->
+        <div id="content-container">
+
+            <!--Page content-->
+            <!--===================================================-->
+            <div id="page-content">
+
+
+               
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="panel">
+                            <div class="panel-heading">
+                                <div class="panel-control">
+                                    <ul class="nav nav-tabs">
+                                        <li class="active"><a href="#dimmasBerry-tab" data-toggle="tab">Dimmas Vs Berry</a></li>
+                                        <li><a href="#dimmasBerryAcum-tab" data-toggle="tab" id="dimmasBerryAcum">Dimmas Vs Berry Acum</a></li>
+                                        <li><a href="#dimmasNoBerry-tab" data-toggle="tab" id="dimmasNoBerry">Dimmas Vs No Berry </a></li>
+
+                                    </ul>
+                                </div>
+
+                                <h3 class="panel-title">
+                                    Comparaciones
+                                </h3>
+
+                            </div>
+
+                            <div class="panel-body">
+                                <br />
+                                <div class="tab-content">
+
+                                    <div class="tab-pane fade in active" id="dimmasBerry-tab">
+                                        <div class="table-responsive">
+                                            <div class="panel-body" id="dimmasBerryPanel" data-target="#dimmasBerryPanel" data-toggle="panel-overlay">
+                                                <br />
+                                                <table id="tbDimmasBerry" data-url="@Url.Action("DimmasBerry", "CompareReports")" class="display table table-hover table-vcenter" cellspacing="0">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Canv Code</th>
+                                                            <th>Edicion</th>
+                                                            <th>Week</th>
+                                                            <th>Subscr ID</th>
+                                                            <th>Main Name</th>
+                                                            <th>Prod Grp Code</th>
+                                                            <th>Dif CO</th>
+                                                            <th>Dif CI</th>
+                                                        </tr>
+                                                    </thead>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="tab-pane fade" id="dimmasBerryAcum-tab">
+                                        <div class="table-responsive">
+
+                                            <div class="panel-body" id="dimmasBerryAcumPanel" data-target="#dimmasBerryAcumPanel" data-toggle="panel-overlay">
+                                                <table id="tbDimmasBerryAcum" data-url="@Url.Action("DimmasBerryAcum", "CompareReports")" class="display table table-hover table-vcenter" cellspacing="0">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Canv Code</th>
+                                                            <th>Edicion</th>
+                                                            <th>Week</th>
+                                                            <th>Subscr ID</th>
+                                                            <th>Main Name</th>
+                                                            <th>Prod Grp Code</th>
+                                                            <th>Dif CO</th>
+                                                            <th>Dif CI</th>
+                                                            <th>Arrival Date</th>
+                                                        </tr>
+                                                    </thead>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <!--===================================================-->
+                                        <!--End Data Table-->
+
+                                    </div>
+
+
+                                    <div class="tab-pane fade" id="dimmasNoBerry-tab">
+                                        <div class="table-responsive">
+
+                                            <div class="panel-body" id="dimmasNoBerryPanel" data-target="#dimmasNoBerryPanel" data-toggle="panel-overlay">
+                                                <table id="tbDimmasNoBerry"
+                                                       data-url="@Url.Action("DimmasNoBerry", "CompareReports")"
+                                                       class="display table table-hover table-vcenter" cellspacing="0">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Canv Code</th>
+                                                            <th>Edicion</th>
+                                                            <th>Week</th>
+                                                            <th>Subscr ID</th>
+                                                            <th>Main Name</th>
+                                                            <th>Prod Grp Code</th>
+                                                            <th>Program Status</th>
+                                                            <th>Dimmas CO</th>
+                                                            <th>Prod CO</th>
+                                                            <th>Dimmas CI</th>
+                                                            <th>Prod CI</th>
+                                                            <th>Dif CO</th>
+                                                            <th>Dif CI</th>
+                                                            <th>Arrival Date</th>
+                                                        </tr>
+                                                    </thead>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <!--===================================================-->
+                                        <!--End Data Table-->
+
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--===================================================-->
+                    <!--End page content-->
+
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+</section>
+@section Scripts{
+    <script src="@Url.Content("~/js/Underscore.js")"></script>
+    <script src="@Url.Content("~/Scripts/linq.js")"></script>
+    <script src="@Url.Content("~/plugins/bootbox/bootbox.min.js")"></script>
+    <script src="@Url.Content("~/js/demo/ui-modals.js")"></script>
+    <script src="@Url.Content("~/js/demo/ui-alerts.js")"></script>
+    <script src="@Url.Content("~/plugins/datatables/media/js/jquery.dataTables.js")"></script>
+    <script src="@Url.Content("~/plugins/datatables/media/js/dataTables.bootstrap.js")"></script>
+    <script src="@Url.Content("~/plugins/bootstrap-select/bootstrap-select.min.js")"></script>
+    <script src="@Url.Content("~/js/accounting.js")"></script>
+    <script src="@Url.Content("~/js/Utils.js")"></script>
+    <script src="@Url.Content("~/plugins/HighCharts/highcharts.js")"></script>
+
+    <script src="http://code.highcharts.com/modules/data.js"></script>
+    <script src="@Url.Content("~/plugins/HighCharts/drilldown.js")"></script>
+    <script src="@Url.Content("~/js/getCompares.js")"></script>
+ <script>
+
+    $(document).ready(function () {
+
+        //  exportMovementsToExcel();
+        GetDimmasBerryReport();
+
+        $("#dimmasBerryAcum").click(function (e) {
+            e.preventDefault();
+
+            if (!$.fn.DataTable.isDataTable('#tbDimmasBerryAcum')) {
+                GetDimmasBerryAcumReport();
+            }
+        })
+
+        $("#dimmasNoBerry").click(function (e) {
+            e.preventDefault();
+
+            if (!$.fn.DataTable.isDataTable('#tbDimmasNoBerry')) {
+                GetDimmasNoBerryReport();
+            }
+        })
+
+
+    });
+
+</script>
+
+
+
+}
+
+
+

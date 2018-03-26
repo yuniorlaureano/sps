@@ -1,0 +1,142 @@
+﻿@section styles {
+    <link href="@Url.Content("~/plugins/datatables/media/css/jquery.dataTables.css")" rel="stylesheet" />
+<link href="@Url.Content("~/css/bootstrap-editable.css")" rel="stylesheet" />
+}
+
+<section class="featured">
+
+    <div class="boxed">
+
+        <!--CONTENT CONTAINER-->
+        <!--===================================================-->
+        <div id="content-container">
+
+            <div id="page-content">
+                <br>
+                <div class="panel" id="histFixPanel" data-toggle="panel-overlay" data-target="#histFixPanel-body">
+                    <div class="panel-heading">
+                        <div class="panel-control">
+                            <a href="#fakelink" class="add-tooltip fa fa-question-circle fa-lg unselectable" data-html="true" data-title="<h4>Información</h4><p style='width:150px'>Busca transacciones en la tabla de comisiones.</p>" data-original-title="" title=""></a>
+                        </div>
+                        <h3 class="panel-title">Buscar Transacciones</h3>
+                    </div>
+
+                    <div class="tab-pane fade in active" id="search-tab">
+                        <!--Horizontal Form-->
+                        <!--===================================================-->
+                        <form class="form-horizontal">
+                            @Html.Partial("_SearchTrans")
+                        </form>
+                        <!--===================================================-->
+                        <!--End Horizontal Form-->
+
+                    </div>
+                    <div>
+
+                        @Html.Partial("_AddTrans")
+                    </div>
+
+                </div>
+                <div class="row" id="tbTransactions" style="display:none">
+                    <div class="col-lg-12">
+                        <div class="panel panel-bordered" id="histDetailPanel">
+                            <div class="panel-heading">
+                                <div class="panel-control">
+                                    <a href="#fakelink" class="add-tooltip fa fa-question-circle fa-lg unselectable" data-html="true" data-title="<h4>Información</h4><p style='width:150px'>Agrega, modifica y/o elimina transacciones de la tabla comisiones.</p><p style='width:150px'>Para modificar una transacción, debes dar click a los campos que deseas modificar, ingresar los nuevos valores y luego dar click al botón editar en la fila que deseas modificar.</p>" data-original-title="" title=""></a>
+                                </div>
+                                <h3 class="panel-title">Transacciones</h3>
+                            </div>
+                            <!--Data Table-->
+                            <!--===================================================-->
+
+                            <div class="panel-body" id="histDetailPanel-body" data-toggle="panel-overlay" data-target="#histDetailPanel-body">
+
+                                <div class="table-responsive">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-sm-6 table-toolbar-left">
+                                                <button data-target="#newTrans" data-toggle="modal" class="btn btn-purple btn-labeled fa fa-plus">Nueva</button>
+                                            </div>
+                                        </div>
+                                        <table id="tbHistDetail" data-url="@Url.Action("GetHistDetail", "CorrectionTrans")" data-urledit="@Url.Action("UpdateCommHistTrans", "CorrectionTrans")" data-urldelete="@Url.Action("DeleteCommHistTrans", "CorrectionTrans")" class="display table table-hover table-vcenter" cellspacing="0" width="100%">
+                                            <thead>
+                                                <tr>
+                                                    <th>Ejecutivo</th>
+                                                    <th>Grp Code</th>
+                                                    <th>Canv Week</th>
+                                                    <th>Asign No.</th>
+                                                    @*<th>Employee ID</th>*@
+                                                    <th>Prod CO</th>
+                                                    <th>Prod CI</th>
+                                                    <th>Renew CI</th>
+                                                    <th>Increase CI</th>
+                                                    <th>Decrease CI</th>
+                                                    <th>Crtl Loss</th>
+                                                    <th>Uncrtl Loss</th>
+                                                    <th>OP CI</th>
+                                                    <th>NP CI</th>
+                                                    <th>OTC CI</th>
+                                                    <th>Acciones</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+</section>
+
+
+@section scripts{
+<script src="@Url.Content("~/js/Underscore.js")"></script>
+<script src="@Url.Content("~/plugins/bootstrap-wizard/jquery.bootstrap.wizard.min.js")"></script>
+<script src="@Url.Content("~/plugins/bootstrap-select/bootstrap-select.min.js")"></script>
+
+<script src="@Url.Content("~/plugins/bootstrap-tagsinput/bootstrap-tagsinput.min.js")"></script>
+
+<script src="@Url.Content("~/plugins/chosen/chosen.jquery.min.js")"></script>
+
+<script src="@Url.Content("~/plugins/datatables/media/js/jquery.dataTables.js")"></script>
+
+<script src="@Url.Content("~/plugins/datatables/media/js/dataTables.bootstrap.js")"></script>
+<script src="@Url.Content("~/plugins/bootbox/bootbox.min.js")"></script>
+<script src="@Url.Content("~/js/demo/ui-modals.js")"></script>
+
+<script src="@Url.Content("~/plugins/bootstrap-timepicker/bootstrap-timepicker.min.js")"></script>
+
+<script src="@Url.Content("~/plugins/bootstrap-datepicker/bootstrap-datepicker.min.js")"></script>
+
+@*<script src="@Url.Content("~/js/moment/moment.min.js")"></script>*@
+<script src="@Url.Content("~/js/bootstrap-editable.js")"></script>
+<script src="@Url.Content("~/js/combodate.js")"></script>
+<script src="@Url.Content("~/js/Utils.js")"></script>
+<script src="@Url.Content("~/js/correctionTrans.js")"></script>
+
+    @*<script>
+            $('#weekRange').daterangepicker({
+                "showDropdowns": true,
+                "timePickerIncrement": 1,
+                "autoApply": true,
+                "startDate": Date.now,
+                "endDate": Date.now,
+                "opens": "left",
+                "drops": "down",
+                "buttonClasses": "btn btn-sm",
+                "applyClass": "btn-success",
+                "cancelClass": "btn-default"
+            });
+        </script>*@
+}
+

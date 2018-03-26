@@ -1,0 +1,146 @@
+﻿
+@section styles {
+    <link href="@Url.Content("~/plugins/datatables/media/css/jquery.dataTables.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/plugins/bootstrap-datepicker/bootstrap-datepicker.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/css/datepicker/daterangepicker.css")" rel="stylesheet" />
+
+<style type="text/css">
+    .demo {
+        position: relative;
+    }
+
+        .demo i {
+            position: absolute;
+            bottom: 10px;
+            right: 24px;
+            top: auto;
+            cursor: pointer;
+        }
+</style>
+}
+
+
+
+<section class="featured">
+
+    <div class="boxed">
+
+        <!--CONTENT CONTAINER-->
+        <!--===================================================-->
+        <div id="content-container">
+
+            <div id="page-content">
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="panel">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Cerrando semana en: <span id="generate-berry-brand"></span></h3>
+                            </div>
+                            <!--Block Styled Form -->
+                            <!--===================================================-->
+                            <form>
+                                <div class="panel-body">
+                                    <div class="col-sm-12">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label class="control-label" for="weekly-fecha-desde">Fecha desde</label>
+                                                    <input type="text" class="form-control date" id="weekly-fecha-desde">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label class="control-label">Edición</label>
+                                                    <select class="selectpicker form-control" id="ddlCanvassEdition" data-show-subtext="true" data-url="@Url.Action("GetActiveDateByEdition", "BerryClosure")"></select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label class="control-label" for="weekly-fecha-hasta">Fecha hasta</label>
+                                                    <input type="text" class="form-control date" id="weekly-fecha-hasta">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label class="control-label" for="demo-hor-inputcanvass">Base de Datos:</label>
+                                                    <br />
+                                                    <label class="form-radio form-normal form-mint form-text"><input data-url="@Url.Action("AutoCompleteOpenCanvEdition", "BerryGenerator")" type="radio" class="chkDB" name="db" value="YP" checked>YP</label>
+                                                    <label class="form-radio form-normal form-mint form-text"><input data-url="@Url.Action("AutoCompleteOpenCanvEdition", "BerryGenerator")" type="radio" class="chkDB" name="db" value="BR">BR</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel-footer text-right">
+                                    <button id="btnCloseBerry" class="btn btn-mint btn-hover-mint add-tooltip" data-url="@Url.Action("CloseBerry", "BerryClosure")" data-placement="top" data-toggle="panel-overlay" data-target="#demo-panel-ref" data-original-title="Cerrar Weekly" type="button">Generar</button>
+                                </div>
+                            </form>
+                            <!--===================================================-->
+                            <!--End Block Styled Form -->
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-bordered" id="logReportPanel">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Weeklies abiertos</h3>
+                            </div>
+                            <div class="panel-body" id="logReportPanel-body" data-toggle="panel-overlay" data-target="#logReportPanel-body">
+                                <table id="tbLogReportPanel" data-url="@Url.Action("GetActiveWeekByDate", "BerryClosure")" class="table table-hover" width="100%">
+                                    <thead>
+                                        <tr>
+                                            <th>Canv Code</th>
+                                            <th>Canv Edition</th>
+                                            <th>Canv Week</th>
+                                            <th>Prod Grp Code</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>   
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+@section scripts{
+
+<!--FooTable [ OPTIONAL ]-->
+<script src="@Url.Content("~/js/datepicker/moment.js")"></script>
+<script src="@Url.Content("~/js/datepicker/daterangepicker.js")"></script>
+<script src="@Url.Content("~/plugins/bootbox/bootbox.min.js")"></script>
+<script src="@Url.Content("~/js/demo/ui-modals.js")"></script>
+<script src="@Url.Content("~/js/demo/ui-alerts.js")"></script>
+<script src="@Url.Content("~/plugins/datatables/media/js/jquery.dataTables.js")"></script>
+<script src="@Url.Content("~/plugins/datatables/media/js/dataTables.bootstrap.js")"></script>
+<script src="@Url.Content("~/plugins/bootstrap-select/bootstrap-select.min.js")"></script>
+<script src="@Url.Content("~/js/Utils.js")"></script>
+<script src="@Url.Content("~/js/berryClousure.js")"></script>
+
+<script>
+    $('#weekRange').daterangepicker({
+        "showDropdowns": true,
+        "timePickerIncrement": 1,
+        "autoApply": true,
+        "startDate": Date.now,
+        "endDate": Date.now,
+        "opens": "left",
+        "drops": "down",
+        "buttonClasses": "btn btn-sm",
+        "applyClass": "btn-success",
+        "cancelClass": "btn-default"
+    });
+    </script>
+
+}
+
+

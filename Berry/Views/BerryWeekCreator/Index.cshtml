@@ -1,0 +1,108 @@
+﻿@section styles {
+    <link href="@Url.Content("~/plugins/datatables/media/css/jquery.dataTables.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/plugins/bootstrap-datepicker/bootstrap-datepicker.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/css/datepicker/daterangepicker.css")" rel="stylesheet" />
+
+    <style type="text/css">
+        .demo {
+            position: relative;
+        }
+
+            .demo i {
+                position: absolute;
+                bottom: 10px;
+                right: 24px;
+                top: auto;
+                cursor: pointer;
+            }
+    </style>
+}
+
+
+
+<section class="featured">
+
+    <div class="boxed">
+
+        <!--CONTENT CONTAINER-->
+        <!--===================================================-->
+        <div id="content-container">
+
+            <div id="page-content">
+                <br>
+
+                <div class="panel" id="berryCreateWeekPanel">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Cerrar Weekly</h3>
+                    </div>
+                    <div class="panel-body" id="berryCreateWeekPanel-body">
+                        <!--Horizontal Form-->
+                        <!--===================================================-->
+                        <form class="form-horizontal">
+                            <div id="demo-panel-ref" data-target="#demo-panel-ref" data-toggle="panel-overlay">
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label" for="demo-hor-inputcanvass">Canvass:</label>
+                                    <div class="col-md-4">
+                                        <select class="selectpicker" id="ddlCanvCode" data-show-subtext="true" data-live-search="true" data-url="@Url.Action("GetCanvassCodes", "Common")"></select>
+                                    </div>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label" for="demo-hor-inputcanvass">Edición:</label>
+                                        <div class="col-md-4">
+                                            <select class="selectpicker" id="ddlCanvassEdition" data-url="@Url.Action("GetActiveCanvEdition", "Common")" data-show-subtext="true"></select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label" for="demo-hor-inputcanvass">Fecha Fin:</label>
+                                        <div id="demo-dp-component" class="col-md-3">
+                                            <div class="input-group date">
+                                                <input id="endWeek" type="text" class="form-control">
+                                                <span class="input-group-addon"><i class="demo-pli-calendar-4"></i></span>
+                                            </div>
+                                            <small class="text-muted">Indique la fecha límite del canvass</small>
+                                        </div>
+
+                                        @*<div class="col-md-3 demo">
+                                <input type="text" id="weekRange" class="form-control">
+                                <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+                            </div>*@
+                                    </div>
+                                </div>
+                                <div class="panel-footer text-right">
+                                    <button id="btnCreateWeek" class="btn btn-mint btn-hover-mint add-tooltip" data-url="@Url.Action("CreateCanvWeek", "BerryWeekCreator")" data-placement="top" data-toggle="panel-overlay" data-target="#demo-panel-ref" data-original-title="Crear Semana">Crear</button>
+                                </div>
+                            </div>
+                        </form>
+                        <!--===================================================-->
+                        <!--End Horizontal Form-->
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+@section scripts{
+
+    <!--FooTable [ OPTIONAL ]-->
+    <script src="@Url.Content("~/js/datepicker/moment.js")"></script>
+    <script src="@Url.Content("~/js/datepicker/daterangepicker.js")"></script>
+    <script src="@Url.Content("~/plugins/bootbox/bootbox.min.js")"></script>
+    <script src="@Url.Content("~/js/demo/ui-modals.js")"></script>
+    <script src="@Url.Content("~/js/demo/ui-alerts.js")"></script>
+    <script src="@Url.Content("~/plugins/datatables/media/js/jquery.dataTables.js")"></script>
+    <script src="@Url.Content("~/plugins/datatables/media/js/dataTables.bootstrap.js")"></script>
+    <script src="@Url.Content("~/plugins/bootstrap-select/bootstrap-select.min.js")"></script>
+    <script src="@Url.Content("~/js/Utils.js")"></script>
+    <script src="@Url.Content("~/js/berryWeekCreator.js")"></script>
+
+    <script>
+        $('#demo-dp-component .input-group.date').datepicker({ autoclose: true });
+    </script>
+}
+
+

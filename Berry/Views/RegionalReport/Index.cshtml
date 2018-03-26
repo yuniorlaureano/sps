@@ -1,0 +1,105 @@
+﻿@section styles {
+    <link href="@Url.Content("~/plugins/datatables/media/css/jquery.dataTables.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/plugins/bootstrap-datepicker/bootstrap-datepicker.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/css/datepicker/daterangepicker.css")" rel="stylesheet" />
+
+    <style type="text/css">
+        .demo {
+            position: relative;
+        }
+
+            .demo i {
+                position: absolute;
+                bottom: 10px;
+                right: 24px;
+                top: auto;
+                cursor: pointer;
+            }
+    </style>
+}
+
+
+
+<section class="featured">
+
+    <div class="boxed">
+
+        <!--CONTENT CONTAINER-->
+        <!--===================================================-->
+        <div id="content-container">
+
+            <div id="page-content">
+                <br>
+
+                <div class="panel" id="berryGenPanel">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Reporte de Regional</h3>
+                    </div>
+
+                    <!--Horizontal Form-->
+                    <!--===================================================-->
+                    <form class="form-horizontal">
+                        <div id="demo-panel-ref" data-target="#demo-panel-ref" data-toggle="panel-overlay">
+                            <div class="panel-body">
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label" for="demo-hor-inputcanvass">Edición:</label>
+                                    <div class="col-md-4">
+                                        <select class="selectpicker" id="ddlCanvassEdition" data-show-subtext="true"><option>2015</option><option>2016</option></select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label" for="demo-hor-inputcanvass">Weekly:</label>
+                                    <div class="col-md-3 demo">
+                                        <input type="text" id="weekRange" class="form-control">
+                                        <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-footer text-right">
+                                <button id="btnExportReport" class="btn btn-mint btn-hover-mint add-tooltip" data-url="@Url.Action("GenerateAndDisplayReport", "RegionalReport")" data-placement="top" data-toggle="panel-overlay" data-target="#demo-panel-ref" data-original-title="Exportar Reporte de Unidades">Exportar</button>
+                            </div>
+                        </div>
+                    </form>
+                    <!--===================================================-->
+                    <!--End Horizontal Form-->
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+@section scripts{
+
+    <!--FooTable [ OPTIONAL ]-->
+    <script src="@Url.Content("~/js/datepicker/moment.js")"></script>
+    <script src="@Url.Content("~/js/datepicker/daterangepicker.js")"></script>
+    <script src="@Url.Content("~/plugins/bootbox/bootbox.min.js")"></script>
+    <script src="@Url.Content("~/js/demo/ui-modals.js")"></script>
+    <script src="@Url.Content("~/js/demo/ui-alerts.js")"></script>
+    <script src="@Url.Content("~/plugins/datatables/media/js/jquery.dataTables.js")"></script>
+    <script src="@Url.Content("~/plugins/datatables/media/js/dataTables.bootstrap.js")"></script>
+    <script src="@Url.Content("~/plugins/bootstrap-select/bootstrap-select.min.js")"></script>
+    <script src="@Url.Content("~/js/Utils.js")"></script>
+    <script src="@Url.Content("~/js/regionReport.js")"></script>
+
+    <script>
+        $('#weekRange').daterangepicker({
+            "showDropdowns": true,
+            "timePickerIncrement": 1,
+            "autoApply": true,
+            "startDate": Date.now,
+            "endDate": Date.now,
+            "opens": "left",
+            "drops": "down",
+            "buttonClasses": "btn btn-sm",
+            "applyClass": "btn-success",
+            "cancelClass": "btn-default"
+        });
+    </script>
+}
+
+

@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="BillingDS" targetNamespace="http://tempuri.org/BillingDS.xsd" xmlns:mstns="http://tempuri.org/BillingDS.xsd" xmlns="http://tempuri.org/BillingDS.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="BillingDS" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="BillingDS" msprop:Generator_UserDSName="BillingDS">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="dtBilling" msprop:Generator_TableClassName="dtBillingDataTable" msprop:Generator_TableVarName="tabledtBilling" msprop:Generator_TablePropName="dtBilling" msprop:Generator_RowDeletingName="dtBillingRowDeleting" msprop:Generator_RowChangingName="dtBillingRowChanging" msprop:Generator_RowEvHandlerName="dtBillingRowChangeEventHandler" msprop:Generator_RowDeletedName="dtBillingRowDeleted" msprop:Generator_UserTableName="dtBilling" msprop:Generator_RowChangedName="dtBillingRowChanged" msprop:Generator_RowEvArgName="dtBillingRowChangeEvent" msprop:Generator_RowClassName="dtBillingRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Subscr_ID" msprop:Generator_ColumnVarNameInTable="columnSubscr_ID" msprop:Generator_ColumnPropNameInRow="Subscr_ID" msprop:Generator_ColumnPropNameInTable="Subscr_IDColumn" msprop:Generator_UserColumnName="Subscr_ID" type="xs:string" minOccurs="0" />
+              <xs:element name="Phone" msprop:Generator_ColumnVarNameInTable="columnPhone" msprop:Generator_ColumnPropNameInRow="Phone" msprop:Generator_ColumnPropNameInTable="PhoneColumn" msprop:Generator_UserColumnName="Phone" type="xs:string" minOccurs="0" />
+              <xs:element name="Subscr_Name" msprop:Generator_ColumnVarNameInTable="columnSubscr_Name" msprop:Generator_ColumnPropNameInRow="Subscr_Name" msprop:Generator_ColumnPropNameInTable="Subscr_NameColumn" msprop:Generator_UserColumnName="Subscr_Name" type="xs:string" minOccurs="0" />
+              <xs:element name="Prosp" msprop:Generator_ColumnVarNameInTable="columnProsp" msprop:Generator_ColumnPropNameInRow="Prosp" msprop:Generator_ColumnPropNameInTable="ProspColumn" msprop:Generator_UserColumnName="Prosp" type="xs:string" minOccurs="0" />
+              <xs:element name="Prod_Co" msprop:Generator_ColumnVarNameInTable="columnProd_Co" msprop:Generator_ColumnPropNameInRow="Prod_Co" msprop:Generator_ColumnPropNameInTable="Prod_CoColumn" msprop:Generator_UserColumnName="Prod_Co" type="xs:string" minOccurs="0" />
+              <xs:element name="Prod_Ci" msprop:Generator_ColumnVarNameInTable="columnProd_Ci" msprop:Generator_ColumnPropNameInRow="Prod_Ci" msprop:Generator_ColumnPropNameInTable="Prod_CiColumn" msprop:Generator_UserColumnName="Prod_Ci" type="xs:string" minOccurs="0" />
+              <xs:element name="Tot_Com" msprop:Generator_ColumnVarNameInTable="columnTot_Com" msprop:Generator_ColumnPropNameInRow="Tot_Com" msprop:Generator_ColumnPropNameInTable="Tot_ComColumn" msprop:Generator_UserColumnName="Tot_Com" type="xs:string" minOccurs="0" />
+              <xs:element name="Renew_Ci" msprop:Generator_ColumnVarNameInTable="columnRenew_Ci" msprop:Generator_ColumnPropNameInRow="Renew_Ci" msprop:Generator_ColumnPropNameInTable="Renew_CiColumn" msprop:Generator_UserColumnName="Renew_Ci" type="xs:string" minOccurs="0" />
+              <xs:element name="Increase_Ci" msprop:Generator_ColumnVarNameInTable="columnIncrease_Ci" msprop:Generator_ColumnPropNameInRow="Increase_Ci" msprop:Generator_ColumnPropNameInTable="Increase_CiColumn" msprop:Generator_UserColumnName="Increase_Ci" type="xs:string" minOccurs="0" />
+              <xs:element name="Decrease_Ci" msprop:Generator_ColumnVarNameInTable="columnDecrease_Ci" msprop:Generator_ColumnPropNameInRow="Decrease_Ci" msprop:Generator_ColumnPropNameInTable="Decrease_CiColumn" msprop:Generator_UserColumnName="Decrease_Ci" type="xs:string" minOccurs="0" />
+              <xs:element name="Np_Ci" msprop:Generator_ColumnVarNameInTable="columnNp_Ci" msprop:Generator_ColumnPropNameInRow="Np_Ci" msprop:Generator_ColumnPropNameInTable="Np_CiColumn" msprop:Generator_UserColumnName="Np_Ci" type="xs:string" minOccurs="0" />
+              <xs:element name="Op_Ci" msprop:Generator_ColumnVarNameInTable="columnOp_Ci" msprop:Generator_ColumnPropNameInRow="Op_Ci" msprop:Generator_ColumnPropNameInTable="Op_CiColumn" msprop:Generator_UserColumnName="Op_Ci" type="xs:string" minOccurs="0" />
+              <xs:element name="Otc_Ci" msprop:Generator_ColumnVarNameInTable="columnOtc_Ci" msprop:Generator_ColumnPropNameInRow="Otc_Ci" msprop:Generator_ColumnPropNameInTable="Otc_CiColumn" msprop:Generator_UserColumnName="Otc_Ci" type="xs:string" minOccurs="0" />
+              <xs:element name="Ctrl_Loss" msprop:Generator_ColumnVarNameInTable="columnCtrl_Loss" msprop:Generator_ColumnPropNameInRow="Ctrl_Loss" msprop:Generator_ColumnPropNameInTable="Ctrl_LossColumn" msprop:Generator_UserColumnName="Ctrl_Loss" type="xs:string" minOccurs="0" />
+              <xs:element name="Unctrl_Loss" msprop:Generator_ColumnVarNameInTable="columnUnctrl_Loss" msprop:Generator_ColumnPropNameInRow="Unctrl_Loss" msprop:Generator_ColumnPropNameInTable="Unctrl_LossColumn" msprop:Generator_UserColumnName="Unctrl_Loss" type="xs:string" minOccurs="0" />
+              <xs:element name="Net_Sales" msprop:Generator_ColumnVarNameInTable="columnNet_Sales" msprop:Generator_ColumnPropNameInRow="Net_Sales" msprop:Generator_ColumnPropNameInTable="Net_SalesColumn" msprop:Generator_UserColumnName="Net_Sales" type="xs:string" minOccurs="0" />
+              <xs:element name="CGI" msprop:Generator_ColumnVarNameInTable="columnCGI" msprop:Generator_ColumnPropNameInRow="CGI" msprop:Generator_ColumnPropNameInTable="CGIColumn" msprop:Generator_UserColumnName="CGI" type="xs:string" minOccurs="0" />
+              <xs:element name="Rep_Info" msprop:Generator_ColumnVarNameInTable="columnRep_Info" msprop:Generator_ColumnPropNameInRow="Rep_Info" msprop:Generator_ColumnPropNameInTable="Rep_InfoColumn" msprop:Generator_UserColumnName="Rep_Info" type="xs:string" minOccurs="0" />
+              <xs:element name="Canv_Week" msprop:Generator_ColumnVarNameInTable="columnCanv_Week" msprop:Generator_ColumnPropNameInRow="Canv_Week" msprop:Generator_ColumnPropNameInTable="Canv_WeekColumn" msprop:Generator_UserColumnName="Canv_Week" type="xs:string" minOccurs="0" />
+              <xs:element name="Canv_Edition" msprop:Generator_ColumnVarNameInTable="columnCanv_Edition" msprop:Generator_ColumnPropNameInRow="Canv_Edition" msprop:Generator_ColumnPropNameInTable="Canv_EditionColumn" msprop:Generator_UserColumnName="Canv_Edition" type="xs:string" minOccurs="0" />
+              <xs:element name="Canv_Code" msprop:Generator_ColumnVarNameInTable="columnCanv_Code" msprop:Generator_ColumnPropNameInRow="Canv_Code" msprop:Generator_ColumnPropNameInTable="Canv_CodeColumn" msprop:Generator_UserColumnName="Canv_Code" type="xs:string" minOccurs="0" />
+              <xs:element name="Prod_Grp_Code" msprop:Generator_ColumnVarNameInTable="columnProd_Grp_Code" msprop:Generator_ColumnPropNameInRow="Prod_Grp_Code" msprop:Generator_ColumnPropNameInTable="Prod_Grp_CodeColumn" msprop:Generator_UserColumnName="Prod_Grp_Code" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

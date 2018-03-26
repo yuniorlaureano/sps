@@ -1,0 +1,168 @@
+﻿<div class="modal fade" id="newTrans" role="dialog" tabindex="-1" aria-labelledby="newTrans" aria-hidden="true" >
+    <div class="modal-dialog">
+        <div class="modal-content" >
+
+            <div class="modal-header">
+                <button data-dismiss="modal" class="close" type="button">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Nueva Transacción</h4>
+            </div>
+
+
+            <div class="modal-body" id="newTrans-body" data-toggle="panel-overlay" data-target="#newTrans-body">
+                <div class="row">
+
+                    <div id="add_trans_steps">
+                        <div class="wz-heading wz-w-label">
+
+                            <!--Progress bar-->
+                            <div class="progress progress-xs">
+                                <div style="width: 15%;" class="progress-bar progress-bar-dark"></div>
+                            </div>
+
+                            <!--Nav-->
+                            <ul class="wz-steps wz-icon-bw wz-nav-off text-lg">
+                                <li class="col-xs-6">
+                                    <a data-toggle="tab" href="#demo-step-tab1">
+                                        <span class="icon-wrap icon-wrap-xs icon-circle bg-dark">
+                                            <span class="wz-icon icon-txt text-bold"><i class="fa fa-user"></i></span>
+                                            <i class="wz-icon-done fa fa-check"></i>
+                                        </span>
+                                        <small class="wz-desc box-block">Cliente</small>
+                                    </a>
+                                </li>
+
+
+                                <li class="col-xs-6">
+                                    <a data-toggle="tab" href="#demo-step-tab2">
+                                        <span class="icon-wrap icon-wrap-xs icon-circle bg-dark">
+                                            <span class="wz-icon icon-txt text-bold"><i class="fa fa-money"></i></span>
+                                            <i class="wz-icon-done fa fa-check"></i>
+                                        </span>
+                                        <small class="wz-desc box-block">Dinero</small>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!--Form-->
+                        <form class="form-horizontal">
+                            <div class="panel-body">
+                                <div class="tab-content">
+
+                                    <!--First tab-->
+                                    <div id="demo-step-tab1" class="tab-pane">
+                                        <div class="row">
+
+                                            <div class="form-group">
+                                                <label class="col-lg-3 control-label">Group Code</label>
+                                                <div class="col-lg-7">
+                                                    <select class="selectpicker" id="ddlProduct" data-url="@Url.Action("GetGrpCodeList", "CorrectionTrans")" data-live-search="true" data-width="100%"></select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-lg-3 control-label">Ejecutivo</label>
+                                                <div class="col-lg-7">
+                                                    <select class="selectpicker" id="ddlRepSales" data-url="@Url.Action("GetActiveRepSales", "CorrectionTrans")" data-live-search="true" data-width="100%"></select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-lg-3 control-label">Semana</label>
+                                                <div class="col-lg-7">
+                                                    <select class="selectpicker" id="ddlActiveWeek" data-url="@Url.Action("GetCanvWeek", "CorrectionTrans")" data-live-search="true" data-width="100%"></select>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <!--Second tab-->
+                                    <div id="demo-step-tab2" class="tab-pane fade">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="col-lg-3 control-label">Prod CO</label>
+                                                    <div class="col-lg-7">
+                                                        <input type="number" id="txtProdCo" value="0" class="form-control" name="username" placeholder="Prod CO">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-lg-3 control-label">Prod CI</label>
+                                                    <div class="col-lg-7">
+                                                        <input type="number" id="txtProdCi" value="0" class="form-control" name="email" placeholder="Prod CI">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-lg-3 control-label">Renew CI</label>
+                                                    <div class="col-lg-7">
+                                                        <input type="number" id="txtRenewCi" value="0" class="form-control" name="username" placeholder="Renew CI">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-lg-3 control-label">Increase</label>
+                                                    <div class="col-lg-7">
+                                                        <input type="number" id="txtIncrease" value="0" class="form-control" name="email" placeholder="Increase">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="col-lg-3 control-label">Decrease</label>
+                                                    <div class="col-lg-7">
+                                                        <input type="number" id="txtDecrease" value="0" class="form-control" name="username" placeholder="Decrease">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="col-lg-3 control-label">Ctrl Loss</label>
+                                                    <div class="col-lg-7">
+                                                        <input type="number" id="txtCtrlLoss" value="0" class="form-control" name="email" placeholder="Ctrl Loss">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-lg-3 control-label">Unctrl Loss</label>
+                                                    <div class="col-lg-7">
+                                                        <input type="number" id="txtUnctrlLoss" value="0" class="form-control" name="username" placeholder="Unctrl Loss">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-lg-3 control-label">OP CI</label>
+                                                    <div class="col-lg-7">
+                                                        <input type="number" id="txtOpCi" value="0" class="form-control" name="email" placeholder="OP CI">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-lg-3 control-label">NP CI</label>
+                                                    <div class="col-lg-7">
+                                                        <input type="number" id="txtNpCi" value="0" class="form-control" name="username" placeholder="NP CI">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-lg-3 control-label">OTC CI</label>
+                                                    <div class="col-lg-7">
+                                                        <input type="number" id="txtOtcCi" value="0" class="form-control" name="email" placeholder="OTC CI">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--Footer button-->
+                            <div class="panel-footer text-right">
+                                <div class="box-inline">
+                                    <button type="button" class="previous btn btn-primary">Previous</button>
+                                    <button type="button" class="next btn btn-primary">Next</button>
+                                    <button type="button" id="btnAdd" data-url="@Url.Action("InsertCommHistTrans", "CorrectionTrans")" class="finish btn btn-mint btn-lg btn-labeled fa fa-check-square">Crear</button>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

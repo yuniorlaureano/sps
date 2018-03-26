@@ -1,0 +1,251 @@
+﻿
+<script>
+    function justNumbers(e)
+    {
+        var keynum = window.event ? window.event.keyCode : e.which;
+        if ((keynum == 8) || (keynum == 46))
+            return true;
+        return /\d/.test(String.fromCharCode(keynum));
+    }
+</script>
+
+
+<section class="featured">
+    <div class="boxed">
+        <!--CONTENT CONTAINER-->
+        <!--===================================================-->
+        <div id="content-container">
+
+            <!--Page content-->
+            <!--===================================================-->
+            <div id="page-content">
+
+                <div class="panel-group accordion" id="accordion">
+                    <div class="panel panel-bordered panel-theme">
+
+                        <!--Accordion title-->
+                        <div class="panel-heading">
+                            <h3 class="panel-title">
+                                <a data-parent="#accordion" data-toggle="collapse" href="#collapseOne" id="reportsPanel">
+                                    <i class="fa fa-minus-circle" style="font-size: 16px"></i>
+                                </a>
+                            </h3>
+                        </div>
+
+                        <!--Accordion content-->
+                        <div class="panel-collapse collapse in" id="collapseOne">
+                            <div class="panel-body">
+                                <div class="panel-body">
+
+                                    <div class="row">
+                                        <div class="table-responsive">
+                                            <div class="col-sm-6">
+                                                <div class="panel-body" id="statusCompare">
+                                                    <h4 class="text-center pad-btm" style="font-family: Dosis, sans-serif; color: #333333"><span>STATUS EN REPORTES</span></h4>
+                                                    <table id="tbStatusCompare" data-url="@Url.Action("GetTotalStatusCompares", "CompareReports")" class="table table-bordered dataTable no-footer dtr-inline">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Reportes</th>
+                                                                <th>Pendiente</th>
+                                                                <th>Devuelto</th>
+                                                                <th>Corregido</th>
+                                                                <th>Auditado</th>
+                                                            </tr>
+                                                        </thead>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="panel-body" id="ChartPanel" data-target="#ChartPanel" data-toggle="panel-overlay">
+                                                    <div id="chart" style="min-width: 310px; height: 400px; margin: 0 auto" data-url="@Url.Action("GetTotalDifCompares", "CompareReports")"></div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="panel">
+                                <div class="panel-heading">
+                                    <div class="panel-control">
+                                        <ul class="nav nav-tabs">
+                                            <li class="active"><a href="#SMSVsDimmas-tab" data-toggle="tab">SMS Vs Dimmas</a></li>
+                                            <li><a href="#dimmasVsSMS-tab" data-toggle="tab" id="dimmasVsSMS">Dimmas Vs SMS</a></li>
+                                            <li><a href="#SMSVsDimmasRej-tab" data-toggle="tab" id="SMSVsDimmasRej">SMS Vs Dimmas Rejects</a></li>
+
+                                        </ul>
+                                    </div>
+
+                                    <h3 class="panel-title">
+                                        Comparaciones
+                                    </h3>
+
+                                </div>
+
+                                <div class="panel-body" id="ComparesPanel">
+                                    <br />
+                                    <div class="tab-content">
+
+                                        <div class="tab-pane fade in active" id="SMSVsDimmas-tab">
+                                            <div class="table-responsive">
+                                                <div class="panel-body" id="SMSVsDimmasPanel" data-target="#SMSVsDimmasPanel" data-toggle="panel-overlay">
+                                                    <br />
+                                                    <table id="tbSMSVsDimmas" data-url="@Url.Action("SMSVsDimmas", "CompareReports")" class="display table table-hover table-vcenter" cellspacing="0">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Devolver</th>
+                                                                <th>Auditar</th>
+                                                                <th>ID</th>
+                                                                <th>Canv</th>
+                                                                <th>Edicion</th>
+                                                                <th>Venta</th>
+                                                                <th>Ejec</th>
+                                                                <th>Unit</th>
+                                                                <th>Team</th>
+                                                                <th>Cargo</th>
+                                                                <th>Venta</th>
+                                                                <th>PS</th>
+                                                                <th>AS</th>
+                                                                <th>CTS</th>
+                                                                <th>No Dig.</th>
+                                                                <th>Dif Ejec.</th>
+                                                                <th>Dif Team</th>
+                                                                <th>Dif Venta</th>
+                                                                <th>Dif Cargo</th>
+                                                                <th>Dif Close Type</th>
+                                                                <th>SMS Dig.</th>
+                                                                <th>LS</th>
+                                                                <th>AG</th>
+                                                                <th width="15%">Status</th>
+
+                                                                <th><span class="glyphicons glyphicons-backward"></span>  Comentario</th>
+
+                                                            </tr>
+                                                        </thead>
+                                                    </table>
+                                                    <br />
+                                                    <div><button id="btnProcesSvD" data-url="@Url.Action("AuditTransaction", "CompareReports")" class="btn btn-purple btn-hover-purple add-tooltip demo-panel-ref-btn" data-placement="top" data-toggle="panel-overlay" data-target="#TricomPanel" data-original-title="Procesar Movimientos" style="float:right !important">Procesar</button></div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="tab-pane fade" id="dimmasVsSMS-tab">
+                                            <div class="table-responsive">
+
+                                                <div class="panel-body" id="DimmasVsSMSPanel" data-target="#DimmasVsSMSPanel" data-toggle="panel-overlay">
+                                                    <table id="tbDimmasVsSMS" data-url="@Url.Action("DimmasVsSMS", "CompareReports")" class="display table table-hover table-vcenter" cellspacing="0">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Cust ID</th>
+                                                                <th>Canv Code</th>
+                                                                <th>Edicion</th>
+                                                                <th>Fecha Venta</th>
+                                                                <th>Ejec SMS</th>
+                                                                <th>Rep Unit</th>
+                                                                <th>Team ID</th>
+                                                                <th>Cargo</th>
+                                                                <th>Venta</th>
+                                                                <th>AS</th>
+                                                                <th>Status</th>
+                                                                <th>LS</th>
+                                                                <th>AG</th>
+                                                            </tr>
+                                                        </thead>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            <!--===================================================-->
+                                            <!--End Data Table-->
+
+                                        </div>
+
+
+                                        <div class="tab-pane fade" id="SMSVsDimmasRej-tab">
+                                            <div class="table-responsive">
+
+                                                <div class="panel-body" id="SMSVsDimmasRejPanel" data-target="#SMSVsDimmasRejPanel" data-toggle="panel-overlay">
+                                                    <table id="tbSMSVsDimmasRej"
+                                                           data-url="@Url.Action("SMSvsDimmasRejects", "CompareReports")"
+                                                           class="display table table-hover table-vcenter" cellspacing="0">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Devolver</th>
+                                                                <th>Auditar</th>
+                                                                <th>Cust ID</th>
+                                                                <th>Canv Code</th>
+                                                                <th>Edicion</th>
+                                                                <th>Fecha Venta</th>
+                                                                <th>Dev Fecha Subida</th>
+                                                                <th>Dev Estatus</th>
+                                                                <th>Dev Fecha Apertura</th>
+                                                                <th>Cargo</th>
+                                                                <th>Venta</th>
+                                                                <th>PS</th>
+                                                                <th>No Digitada</th>
+                                                                <th>Dif Venta</th>
+                                                                <th>Dif Cargo</th>
+                                                                <th>Modificado Por</th>
+                                                                <th>Venta x95</th>
+                                                                <th width="10%">Status</th>
+                                                                <th>Comentario</th>
+
+                                                            </tr>
+                                                        </thead>
+                                                    </table>
+                                                    <br />
+                                                    <div><button id="btnProcesDvSR" data-url="@Url.Action("AuditTransaction", "CompareReports")" class="btn btn-purple btn-hover-purple add-tooltip demo-panel-ref-btn" data-placement="top" data-toggle="panel-overlay" data-target="#TricomPanel" data-original-title="Procesar Movimientos" style="float:right !important">Procesar</button></div>
+
+                                                </div>
+                                            </div>
+                                            <!--===================================================-->
+                                            <!--End Data Table-->
+
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--===================================================-->
+                        <!--End page content-->
+
+                    </div>
+
+                </div>
+
+
+        </div>
+    </div>
+</section>
+@section Scripts{
+    <script src="@Url.Content("~/js/Underscore.js")"></script>
+    <script src="@Url.Content("~/plugins/bootbox/bootbox.min.js")"></script>
+    <script src="@Url.Content("~/js/demo/ui-modals.js")"></script>
+    <script src="@Url.Content("~/js/demo/ui-alerts.js")"></script>
+    <script src="@Url.Content("~/plugins/datatables/media/js/jquery.dataTables.js")"></script>
+    <script src="@Url.Content("~/plugins/datatables/media/js/dataTables.bootstrap.js")"></script>
+    <script src="@Url.Content("~/plugins/bootstrap-select/bootstrap-select.min.js")"></script>
+    <script src="@Url.Content("~/js/accounting.js")"></script>
+    <script src="@Url.Content("~/js/Utils.js")"></script>
+    <script src="@Url.Content("~/plugins/HighCharts/highcharts.js")"></script>
+    
+    
+    <script src="http://code.highcharts.com/modules/data.js"></script>
+    <script src="@Url.Content("~/plugins/HighCharts/drilldown.js")"></script>
+    <script src="@Url.Content("~/js/getCompares.js")"></script>
+
+
+}
+
+
+

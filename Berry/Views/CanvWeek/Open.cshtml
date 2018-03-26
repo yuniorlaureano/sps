@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewBag.Title = "Open";
+}
+
+@{
+    ViewBag.Title = "canv week";
+}
+<section class="featured">
+
+    <div class="boxed">
+        <div id="content-container">
+
+            <div id="page-content">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-bordered" id="logReportPanel" data-url="@Url.Action("GetClosedWeek", "CanvWeek")">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Semanas cerradas</h3>
+                            </div>
+                            <div class="panel-body" id="logReportPanel-body" data-toggle="panel-overlay" data-target="#logReportPanel-body">
+                                <table id="tbLogReportPanel" data-url="@Url.Action("OpenWeek", "CanvWeek")" class="table table-hover table-bordered" width="100%">
+                                    <thead>
+                                        <tr>
+                                            <th>Semana</th>
+                                            <th>Desde</th>
+                                            <th>Hasta</th>
+                                            <td></td>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+@section scripts{
+    <script src="@Url.Content("~/js/openWeek.js")"></script>
+}
+
+

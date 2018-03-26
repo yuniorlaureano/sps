@@ -1,0 +1,219 @@
+﻿@section styles {
+    <link href="@Url.Content("~/plugins/datatables/media/css/jquery.dataTables.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/plugins/bootstrap-datepicker/bootstrap-datepicker.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/css/datepicker/daterangepicker.css")" rel="stylesheet" />
+
+    <style type="text/css">
+        .demo {
+            position: relative;
+        }
+            .demo i {
+                position: absolute;
+                bottom: 10px;
+                right: 24px;
+                top: auto;
+                cursor: pointer;
+            }
+
+        .dateRange {
+            width: 80px;
+        }
+        .thColor {
+            color: #fff !important;
+        }
+    </style>
+}
+
+<section class="featured">
+
+    <div class="boxed">
+        <!--CONTENT CONTAINER-->
+        <!--===================================================-->
+        <div id="content-container">
+
+            <div id="page-content">
+                <br>
+                <div class="panel" id="berryGenPanel" data-target="#berryGenPanel" data-toggle="panel-overlay">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Reporte Ventas</h3>
+                    </div>
+
+                    <!--Horizontal Form-->
+                    <!--===================================================-->
+                    <form class="form-horizontal">
+                        <div class="panel-body" id="demo-panel-ref">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label" for="demo-hor-inputcanvass">Año:</label>
+                                <div class="col-md-6">
+                                    <select class="selectpicker" id="ddlCanvassEdition" data-url="@Url.Action("GetActiveCanvEdition", "Common")" data-show-subtext="true"></select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label" for="demo-hor-inputcanvass">Pay Period:</label>
+                                <div class="col-md-6">
+                                    <select class="selectpicker" id="ddlPayPeriod" data-show-subtext="true"></select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label" for="demo-hor-inputcanvass"><i class="fa fa-calendar"></i></label>
+                                <div class="col-md-6">
+                                    <input type="text" class="dateRange" id="txtStart" data-show-subtext="true" readonly />
+                                    <span> &nbsp hasta &nbsp</span>
+                                    <input type="text" class="dateRange" id="txtEnd" data-show-subtext="true" readonly />
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <!--===================================================-->
+                    <!--End Horizontal Form-->
+                    <div class="panel-footer text-right">
+                        <button id="btnSearch" class="btn btn-mint btn-hover-mint add-tooltip" data-url="@Url.Action("GetPayPeriod", "SalesReport")" data-placement="top" data-toggle="panel-overlay" data-target="#demo-panel-ref" data-original-title="Buscar PayPeiod">Buscar</button>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-bordered" id="pivotReportPanel" style="display:none">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">
+                                    Resumen Reporte Ventas
+                                </h3>
+
+                            </div>
+
+                            <!--Data Table-->
+                            <!--===================================================-->
+
+                            <div class="panel-body" style="margin-top:45px">
+                                <div class="pad-btm form-inline">
+                                    <div class="row">
+
+                                        <div class="col-md-3 col-md-offset-9 table-toolbar-right">
+                                            <button id="btnExportReport" data-target="#export-sales-report" data-toggle="modal" class="btn btn-mint btn-icon icon-lg fa fa-download btn-hover-info add-tooltip" data-url="@Url.Action("GenerateAndDisplayReport", "SalesReport")" data-placement="top" data-original-title="Exportar Reporte Ventas"></button>
+
+                                            @*<button id="btnExportReport" class="btn btn-purple btn-icon icon-lg fa fa-download btn-hover-info add-tooltip" data-url="@Url.Action("GenerateAndDisplayReport", "SalesReport")" data-placement="top" data-toggle="tooltip" data-original-title="Exportar Reporte Ventas"></button>*@
+                                      
+                                          </div>
+                                    </div>
+                                </div>
+
+                                <div class="table-responsive" id="pivotReport-body" data-toggle="panel-overlay" data-target="#pivotReportPanel-body">
+                                    <div class="panel-body">
+                                        <table id="tbPivotReport" data-url="@Url.Action("GetPivotReport", "SalesReport")" class="display table table-hover table-vcenter text-center tablefilter" style="margin-top:20px" cellspacing="0" width="100%">
+                                            <thead>
+                                                <tr>
+                                                    <th colspan="3" class="thType"></th>
+                                                    <th colspan="3" class="thType thColor text-center">Digital</th>
+                                                    <th colspan="3" class="thType thColor text-center">Print</th>
+                                                    <th colspan="3" class="thType thColor text-center">Total</th>
+                                                </tr>
+                                                <tr>
+                                                    <th class="thColor">Supervisor</th>
+                                                    <th class="thColor">Rep ID</th>
+                                                    <th class="thColor">Representante</th>
+                                                    <th class="thColor text-center">Prod CO</th>
+                                                    <th class="thColor text-center">New</th>
+                                                    <th class="thColor text-center">Prod CI</th>
+                                                    <th class="thColor text-center">Prod CO</th>
+                                                    <th class="thColor text-center">New</th>
+                                                    <th class="thColor">Prod CI</th>
+                                                    <th class="thColor text-center">Prod CO</th>
+                                                    <th class="thColor text-center">New</th>
+                                                    <th class="thColor text-center">Prod CI</th>
+                                                </tr>
+                                            </thead>
+                                            <tfoot>
+                                                <tr>
+                                                    <th>Total:</th>
+                                                    <th></th>
+                                                    <th></th>
+                                                    <th class="text-center"></th>
+                                                    <th class="text-center"></th>
+                                                    <th class="text-center"></th>
+                                                    <th class="text-center"></th>
+                                                    <th class="text-center"></th>
+                                                    <th class="text-center"></th>
+                                                    <th class="text-center"></th>
+                                                    <th class="text-center"></th>
+                                                    <th class="text-center"></th>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Default Bootstrap Modal-->
+    <!--===================================================-->
+    <div class="modal fade" id="export-sales-report" data-target="#export-sales-report" data-toggle="panel-overlay" role="dialog" tabindex="-1" aria-labelledby="export-sales-report" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!--Modal header-->
+                <div class="modal-header">
+                    <button data-dismiss="modal" class="close" type="button">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">Reporte de ventas</h4>
+                </div>
+
+                <!--Modal body-->
+                <div class="modal-body">
+
+                    <div class="loader-wrapper" style="display:none">
+                        <div class="loader"></div>
+                        <div class="loader-section section-left"></div>
+                        <div class="loader-section section-right"></div>
+                    </div>
+
+                    <h4 class="text-thin">Descargar en formato:</h4>
+                    <div class="row  demo-nifty-btn pad-ver">
+                        <div class="col-sm-6">
+                            <input id="btnPDF" type="image" src="@Url.Content("~/img/pdf.png")" style="width:75px">
+                            <h4 class="text-thin">PDF</h4>
+                        </div>
+                        <div class="col-sm-6">
+                            <input id="btnXLS" type="image" src="@Url.Content("~/img/xls.png")" style="width:75px">
+                            <h4 class="text-thin">Excel</h4>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+@section scripts{
+
+    <!--FooTable [ OPTIONAL ]-->
+    <script src="@Url.Content("~/js/Underscore.js")"></script>
+    <script src="@Url.Content("~/js/datepicker/moment.js")"></script>
+    <script src="@Url.Content("~/js/datepicker/daterangepicker.js")"></script>
+    <script src="@Url.Content("~/plugins/bootbox/bootbox.min.js")"></script>
+    <script src="@Url.Content("~/js/demo/ui-modals.js")"></script>
+    <script src="@Url.Content("~/js/demo/ui-alerts.js")"></script>
+    <script src="@Url.Content("~/plugins/datatables/media/js/jquery.dataTables.js")"></script>
+    <script src="@Url.Content("~/plugins/datatables/media/js/dataTables.bootstrap.js")"></script>
+    <script src="@Url.Content("~/plugins/bootstrap-select/bootstrap-select.min.js")"></script>
+    <script src="@Url.Content("~/js/accounting.js")"></script>
+    <script src="@Url.Content("~/js/Utils.js")"></script>
+    <script src="@Url.Content("~/js/payPeriod.js")"></script>
+
+    <script>
+      //  $('.tablefilter').filterable({ ignoreCase: true });
+    </script>
+
+}
+
+
