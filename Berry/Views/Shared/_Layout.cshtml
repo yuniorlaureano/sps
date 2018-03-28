@@ -12,8 +12,10 @@
 
     <link href="@Url.Content("~/css/nifty.min.css")" rel="stylesheet">
 
-    <link href="@Url.Content("~/plugins/font-awesome/css/font-awesome.min.css")" rel="stylesheet">
+    <link href="@Url.Content("~/Content/web-fonts-with-css/css/fontawesome.min.css")" rel="stylesheet">
 
+    <link href="@Url.Content("~/Content/css/fa-svg-with-js.css")" rel="stylesheet">
+  
     @*<link href="@Url.Content("~/plugins/switchery/switchery.min.css")" rel="stylesheet">*@
 
     <link href="@Url.Content("~/plugins/bootstrap-select/bootstrap-select.min.css")" rel="stylesheet">
@@ -46,7 +48,7 @@
                     <a href="@Url.Action("Index","Home")" class="navbar-brand">
                         <img src="@Url.Content("~/img/logo.png")" alt="Nifty Logo" class="brand-icon">
                         <div class="brand-title">
-                            <span class="brand-text">Berry</span>
+                            <span class="brand-text">SPS</span>
                         </div>
                     </a>
                 </div>
@@ -126,19 +128,13 @@
                                 <li class="list-divider"></li>
 
                                 <!--Category name-->
-                                <li class="list-header">Acciones</li>
+                                <li class="list-header"><span class="menu-title">Acciones</span></li>
                                 <!--Submenu-->
                                 <li data-name="Dashboard"><a href="@Url.Action("Index","Home")">Dashboard</a></li>
-                                <li data-name="Process">
-                                    <a href="~/">Weekly<i class="arrow"></i></a>
-                                    <ul class="collapse">
-                                        <li data-name="ProcessBerryGeneration">@Html.ActionLink("Correr Weekly", "BerryGenerator", "BerryGenerator")</li>
-                                        <li data-name="ProcessWeekClousure">@Html.ActionLink("Cerrar semana", "Close", "CanvWeek")</li>
-                                        <li data-name="ProcessWeekOpening">@Html.ActionLink("Abrir semana", "Open", "CanvWeek")</li>
-                                        <li data-name="ProcessWeekCreator">@Html.ActionLink("Crear semana", "Index", "BerryWeekCreator")</li>
-
-                                    </ul>
-                                </li>
+                                <li data-name="ProcessBerryGeneration">@Html.ActionLink("Correr Weekly", "BerryGenerator", "BerryGenerator")</li>
+                                <li data-name="ProcessWeekClousure">@Html.ActionLink("Cerrar semana", "Close", "CanvWeek")</li>
+                                <li data-name="ProcessWeekOpening">@Html.ActionLink("Abrir semana", "Open", "CanvWeek")</li>
+                                <li data-name="ProcessWeekCreator">@Html.ActionLink("Crear semana", "Index", "BerryWeekCreator")</li>
                                 <li data-name="Reports">
                                     <a href="~/">Reportes<i class="arrow"></i></a>
                                     <ul class="collapse">
@@ -229,6 +225,8 @@
 
     <script src="@Url.Content("~/js/datepicker/moment.js")"></script>
 
+    <script src="@Url.Content("~/Content/js/fontawesome-all.min.js")"></script>
+
     <script src="@Url.Content("~/plugins/bootstrap-select/bootstrap-select.min.js")"></script>
 
     <script src="@Url.Content("~/js/Utils.js")"></script>
@@ -243,13 +241,13 @@
 
     <script>
 
-        $(document).ready(function () {
-            $.get($('li[data-name="Axesa"]').data('url'), function (fullAccess) {
-                if (fullAccess == false) {
-                    $('li[data-name="Axesa"] ul').children().not('li[data-name="SalesReport"]').html('');
-                }
-            });
-        });
+        //$(document).ready(function () {
+        //    $.get($('li[data-name="Axesa"]').data('url'), function (fullAccess) {
+        //        if (fullAccess == false) {
+        //            $('li[data-name="Axesa"] ul').children().not('li[data-name="SalesReport"]').html('');
+        //        }
+        //    });
+        //});
 
     </script>
 

@@ -184,6 +184,40 @@ namespace Berry.Controllers
             DataTable log = db.GetPostGeneratedBerryBarByDate(startDate, endDate);
             return Json(JsonConvert.SerializeObject(log), JsonRequestBehavior.AllowGet);
         }
-       
-	}
+
+        /// <summary>
+        /// Descarga el reporte general pos generacion de berry
+        /// </summary>
+        /// <param name="startDate"></param>
+        /// <param name="endDate"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public JsonResult GetPostGeneratedXlsxReport(string startDate, string endDate)
+        {
+            db = new BerryDB();
+            string file = db.ExportPostGeneratedWeeklyReport(
+                startDate, 
+                endDate,
+                "general",
+                "reporte-general",
+                Server.MapPath("~/Content/Files/")
+            );
+
+            return Json("OK");
+        }
+
+        /// <summary>
+        /// Descarga el reporte general pos generacion de berry
+        /// </summary>
+        /// <param name="startDate"></param>
+        /// <param name="endDate"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public FileResult GetPostGeneratedXlsxReport()
+        {
+            string file = Server.MapPath("~/Content/Files/reporte-general.xlsx");
+            return File(file, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+        }
+
+    }
 }

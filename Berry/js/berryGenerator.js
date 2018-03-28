@@ -4,11 +4,11 @@
 
 $(document).ready(function () {
 
-    $("#command-button-proccess").attr("disabled", true);
-    //$("#panel-canv-wee-details").hide();
     $("#post-berry-generated-chart-parent").hide();
 
-    $('#tbLogReportPanel').DataTable({
+    $("#command-button-proccess").attr("disabled", true);
+
+    $('#tbl-postgenerated-tabular-data').DataTable({
         "bDestroy": true,
         "deferRender": true,
         "bSort": false
@@ -29,7 +29,7 @@ $(document).ready(function () {
             return activeCanvWeekParams.editionActivated;
         } else {
 
-            if ((startDate != '' || startDate != null) && (endDate != '' || endDate != null)) {
+            if ((startDate !== '') && (endDate !== '')) {
                                 
                 getOpenedCanvWeekDetailsByDate(startDate, endDate, function (data) {
 
@@ -59,7 +59,7 @@ $(document).ready(function () {
         var endDate = $(this).val();
         var week = $('#canvweek').val();
 
-        if ((startDate != '' || startDate != null) && (endDate != '' || endDate != null)) {
+        if ((startDate !== '') && (endDate !== '')) {
                         
             getOpenedCanvWeekDetailsByDate(startDate, endDate, function (data) {
 
@@ -88,7 +88,7 @@ $(document).ready(function () {
         var week = $(this).val();
 
 
-        if (week != 'none') {
+        if (week !== 'none') {
 
             getActiveDateByWeek( week, url, function (dates) {
 
@@ -151,9 +151,39 @@ $(document).ready(function () {
         });
     });
     
-    //paintPostGeneratedBerryChart();
-    generatePostBerryBarChart();
+    $("#download-pg-gn-report").on("click", function(){
+        
+        var startDate = $('#weekly-fecha-desde').val();
+        var endDate = $('#weekly-fecha-hasta').val();
+
+        if ((startDate !== '') && (endDate !== '')) {
+            
+            downloadPsGnReport(
+                $(this).attr("data-url"),
+                $(this).attr("data-download-url"),
+                startDate,
+                endDate);
+
+        } else {
+
+            alertNoty("Debe proveer las fechas", "Info", "danger");
+        }
+    });
 });
+
+function addPostGeneratedRow(table, value) {
+
+    table.row.add([
+         value.BOOK_CODE,
+         value.WEEKLY_PI,
+         value.WEEKLY_NI,
+         value.INCREASE,
+         value.DECREASE,
+         value.CANCEL,
+         value.NETO
+    ]).draw(false);
+
+}
 
 function clearDates() {
 
@@ -166,6 +196,9 @@ function showChartTap() {
     $("a[href='#demo-tabs-box-1']").parents("li").removeClass("active");
     $("#demo-tabs-box-1").removeClass("in active");
 
+    $("a[href='#demo-tabs-box-3']").parents("li").removeClass("active");
+    $("#demo-tabs-box-3").removeClass("in active");
+
     $("a[href='#demo-tabs-box-2']").parents("li").addClass("active");
     $("#demo-tabs-box-2").addClass("in active");
 }
@@ -174,6 +207,9 @@ function showWeekTap() {
 
     $("a[href='#demo-tabs-box-1']").parents("li").addClass("active");
     $("#demo-tabs-box-1").addClass("in active");
+
+    $("a[href='#demo-tabs-box-3']").parents("li").removeClass("active");
+    $("#demo-tabs-box-3").removeClass("in active");
 
     $("a[href='#demo-tabs-box-2']").parents("li").removeClass("active");
     $("#demo-tabs-box-2").removeClass("in active");
@@ -203,7 +239,7 @@ function getPostGeneratedBerryByDate(startDate, endDate) {
     $.get($('#post-berry-generated-chart').data("url"), { startDate: startDate, endDate: endDate }, function (result) {
 
         var _data = JSON.parse(result);
-
+        var table = $('#tbl-postgenerated-tabular-data').DataTable();
         var data = [
                     {   type: "column",
                         name: "PI",
@@ -221,10 +257,13 @@ function getPostGeneratedBerryByDate(startDate, endDate) {
                     }
         ];
 
+        table.clear().draw();
+
         $(_data).each(function (key, value) {
 
             data[0].dataPoints.push({ label: $.trim(value.BOOK_CODE), y: value.WEEKLY_NI });
             data[1].dataPoints.push({ label: $.trim(value.BOOK_CODE), y: value.WEEKLY_PI });
+            addPostGeneratedRow(table, value);
         });
 
         showChartTap();
@@ -245,9 +284,9 @@ function addDetailRow(element, resultset) {
         html = "";
         html += '<div class="col-sm-2 col-lg-2"><div class="panel panel-info panel-colorful">';
         html += '<div class="pad-all">';
-        html += '<p class="text-lg text-semibold"><i class="demo-pli-wallet-2 icon-fw"></i>Semana <span>(' + value.CANV_WEEK + ')</span></p>';
-        html += '<p class="mar-no"><span class="pull-right text-bold">' + moment(value.DESDE).format('MM/DD/YYYY') + '</span>Fecha de inicio</p>';
-        html += '<p class="mar-no"><span class="pull-right text-bold">' + moment(value.HASTA).format('MM/DD/YYYY') + '</span>Fecha de fin</p>';
+        html += '<p class="text-lg text-semibold">Semana (' + value.CANV_WEEK + ')</p>';
+        html += '<span class="text-bold">' + moment(value.DESDE).format('MM/DD/YYYY') + '-</span>';
+        html += '<span class="text-bold">' + moment(value.HASTA).format('MM/DD/YYYY') + '</span>';
         html += '</div>';
         html += '</div></div>';
 
@@ -279,7 +318,7 @@ function generarWeekle(url) {
     var startDate = $("#weekly-fecha-desde").val();
     var endDate = $("#weekly-fecha-hasta").val();
 
-    if ((startDate != null || startDate != '') && (endDate != null || endDate != '')) {
+    if ((startDate !== null || startDate !== '') && (endDate !== null || endDate !== '')) {
 
         $.post(url, { startWeek: startDate, endWeek: endDate }).done(function () {
 
@@ -306,9 +345,9 @@ function generatePostBerryBarChart(data) {
         subtitles: [{
             text: "semana generadas"
         }],
-        //axisX: {
-        //    title: "States"
-        //},
+        axisX: {
+            title: "Libros",
+        },
         axisY: {
             title: "Cantidad",
             titleFontColor: "#4F81BC",
@@ -316,13 +355,6 @@ function generatePostBerryBarChart(data) {
             labelFontColor: "#4F81BC",
             tickColor: "#4F81BC"
         },
-        //axisY2: {
-        //    title: "Clutch - Units",
-        //    titleFontColor: "#C0504E",
-        //    lineColor: "#C0504E",
-        //    labelFontColor: "#C0504E",
-        //    tickColor: "#C0504E"
-        //},
         toolTip: {
             shared: true
         },
@@ -343,4 +375,20 @@ function generatePostBerryBarChart(data) {
         e.chart.render();
     }
 
+}
+
+function downloadPsGnReport(url, file, startDate, endDate) {
+
+    showColorLoading();
+    $.post(url, { startDate: startDate, endDate: endDate }, function (result) {
+
+        if (result == "OK") {
+  
+            window.location = file;
+        } else {
+            alertNoty("Error al descargar el archivo. Itente nuevamente.", "Info", "danger");
+        }
+
+        hideColorLoading();
+    });
 }

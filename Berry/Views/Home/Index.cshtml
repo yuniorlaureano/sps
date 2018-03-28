@@ -2,3 +2,91 @@
     ViewBag.Title = "Home Page";
 }
 
+@section styles {
+    <link href="@Url.Content("~/plugins/bootstrap-datepicker/bootstrap-datepicker.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/css/datepicker/daterangepicker.css")" rel="stylesheet" />
+
+    <style type="text/css">
+        .demo {
+            position: relative;
+        }
+
+            .demo i {
+                position: absolute;
+                bottom: 10px;
+                right: 24px;
+                top: auto;
+                cursor: pointer;
+            }
+    </style>
+}
+<section class="featured">
+
+    <div class="boxed">
+
+        <!--CONTENT CONTAINER-->
+        <!--===================================================-->
+        <div id="content-container">
+
+            <div id="page-content">
+
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="panel">
+                            @*<div class="panel-heading">
+                                <h3 class="panel-title">Area Chart</h3>
+                            </div>*@
+                            <div class="panel-body">
+                                <!--Morris Area Chart placeholder-->
+                                <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                                <div id="chart-cls-opn-rn-week" style="height: 300px; width: 100%;"></div>
+                                <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="panel panel-bordered-info panel-colorful">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Última semana corrida</h3>
+                            </div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <table id="tbl-generated-lastweek" class="table table-hover table-striped table-bordered" width="100%">
+                                            <thead>
+                                                <tr>
+                                                    <th>Book</th>
+                                                    <th>PI</th>
+                                                    <th>NI</th>
+                                                    <th>Increase</th>
+                                                    <th>Decrease</th>
+                                                    <th>Cancel</th>
+                                                    <th>Neto</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+@section scripts{
+
+    <script src="@Url.Content("~/plugins/bootbox/bootbox.min.js")"></script>
+    <script src="@Url.Content("~/js/demo/ui-modals.js")"></script>
+    <script src="@Url.Content("~/js/demo/ui-alerts.js")"></script>
+    <script src="@Url.Content("~/plugins/datatables/media/js/jquery.dataTables.js")"></script>
+    <script src="@Url.Content("~/plugins/datatables/media/js/dataTables.bootstrap.js")"></script>
+    <script src="@Url.Content("~/plugins/bootstrap-select/bootstrap-select.min.js")"></script>
+    <script src="@Url.Content("~/js/Utils.js")"></script>
+    <script src="@Url.Content("~/js/dashboard.js")"></script>
+    
+}
+

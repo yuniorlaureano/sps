@@ -24,6 +24,7 @@
     <SccLocalPath>SAK</SccLocalPath>
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -49,16 +50,19 @@
     <Reference Include="AutoMapper.Net4">
       <HintPath>..\packages\AutoMapper.3.3.1\lib\net40\AutoMapper.Net4.dll</HintPath>
     </Reference>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.5.5631.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Report.Viewer.11.0.0.0\lib\net\Microsoft.ReportViewer.Common.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\DLL\Microsoft.ReportViewer.ProcessingObjectModel.DLL</HintPath>
+      <HintPath>..\packages\Microsoft.Report.Viewer.11.0.0.0\lib\net\Microsoft.ReportViewer.ProcessingObjectModel.DLL</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.ReportViewer.WebForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Report.Viewer.11.0.0.0\lib\net\Microsoft.ReportViewer.WebForms.DLL</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -128,9 +132,11 @@
       <Private>True</Private>
       <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Files\" />
     <Folder Include="plugins\flot-charts\examples\gauge\" />
     <Folder Include="plugins\fullcalendar\less\" />
     <Folder Include="Views\AccessControl\" />
@@ -213,17 +219,34 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\css\fa-svg-with-js.css" />
     <Content Include="Content\fa-svg-with-js.css" />
     <Content Include="Content\jquery.loading.min.css" />
+    <Content Include="Content\js\fa-brands.js" />
+    <Content Include="Content\js\fontawesome-all.min.js" />
     <Content Include="Content\loading.css" />
     <Content Include="Content\paper.css" />
     <Content Include="Content\Util.css" />
+    <Content Include="Content\web-fonts-with-css\css\fa-brands.css" />
+    <Content Include="Content\web-fonts-with-css\css\fa-brands.min.css" />
+    <Content Include="Content\web-fonts-with-css\css\fa-regular.css" />
+    <Content Include="Content\web-fonts-with-css\css\fa-regular.min.css" />
+    <Content Include="Content\web-fonts-with-css\css\fa-solid.css" />
+    <Content Include="Content\web-fonts-with-css\css\fa-solid.min.css" />
+    <Content Include="Content\web-fonts-with-css\css\fontawesome-all.css" />
+    <Content Include="Content\web-fonts-with-css\css\fontawesome-all.min.css" />
+    <Content Include="Content\web-fonts-with-css\css\fontawesome.css" />
+    <Content Include="Content\web-fonts-with-css\css\fontawesome.min.css" />
+    <Content Include="Content\web-fonts-with-css\webfonts\fa-brands-400.svg" />
+    <Content Include="Content\web-fonts-with-css\webfonts\fa-regular-400.svg" />
+    <Content Include="Content\web-fonts-with-css\webfonts\fa-solid-900.svg" />
     <Content Include="css\bootstrap-editable.css" />
     <Content Include="css\bootstrap.css" />
     <Content Include="css\bootstrap.min.css" />
     <Content Include="css\datepicker\daterangepicker.css" />
     <Content Include="css\demo\nifty-demo.css" />
     <Content Include="css\demo\nifty-demo.min.css" />
+    <Content Include="css\fontawesome-all.min.css" />
     <Content Include="css\loading.css" />
     <Content Include="css\main.css" />
     <Content Include="css\nifty.css" />
@@ -351,6 +374,7 @@
     <Content Include="js\closeWeek.js" />
     <Content Include="js\combodate.js" />
     <Content Include="js\correctionTrans.js" />
+    <Content Include="js\dashboard.js" />
     <Content Include="js\datepicker\daterangepicker.js" />
     <Content Include="js\datepicker\moment.js" />
     <Content Include="js\datepicker\moment.min.js" />
@@ -1553,7 +1577,6 @@
     <Content Include="plugins\yoxview\yoxview.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="img\flags\united-kingdom.png.tmp" />
     <Content Include="less\nifty.less" />
     <Content Include="less\nifty\animation.less" />
     <Content Include="less\nifty\aside.less" />
@@ -1878,6 +1901,51 @@
     <Content Include="plugins\yoxview\jwplayer-master\test\.jshintrc" />
     <Content Include="plugins\yoxview\jwplayer-master\test\data\playlist.json" />
     <Content Include="plugins\yoxview\jwplayer-master\test\manual\assets\thumbs.vtt" />
+    <Content Include="Content\web-fonts-with-css\less\fa-brands.less" />
+    <Content Include="Content\web-fonts-with-css\less\fa-regular.less" />
+    <Content Include="Content\web-fonts-with-css\less\fa-solid.less" />
+    <Content Include="Content\web-fonts-with-css\less\fontawesome.less" />
+    <Content Include="Content\web-fonts-with-css\less\_animated.less" />
+    <Content Include="Content\web-fonts-with-css\less\_bordered-pulled.less" />
+    <Content Include="Content\web-fonts-with-css\less\_core.less" />
+    <Content Include="Content\web-fonts-with-css\less\_fixed-width.less" />
+    <Content Include="Content\web-fonts-with-css\less\_icons.less" />
+    <Content Include="Content\web-fonts-with-css\less\_larger.less" />
+    <Content Include="Content\web-fonts-with-css\less\_list.less" />
+    <Content Include="Content\web-fonts-with-css\less\_mixins.less" />
+    <Content Include="Content\web-fonts-with-css\less\_rotated-flipped.less" />
+    <Content Include="Content\web-fonts-with-css\less\_screen-reader.less" />
+    <Content Include="Content\web-fonts-with-css\less\_stacked.less" />
+    <Content Include="Content\web-fonts-with-css\less\_variables.less" />
+    <Content Include="Content\web-fonts-with-css\scss\fa-brands.scss" />
+    <Content Include="Content\web-fonts-with-css\scss\fa-regular.scss" />
+    <Content Include="Content\web-fonts-with-css\scss\fa-solid.scss" />
+    <Content Include="Content\web-fonts-with-css\scss\fontawesome.scss" />
+    <Content Include="Content\web-fonts-with-css\scss\_animated.scss" />
+    <Content Include="Content\web-fonts-with-css\scss\_bordered-pulled.scss" />
+    <Content Include="Content\web-fonts-with-css\scss\_core.scss" />
+    <Content Include="Content\web-fonts-with-css\scss\_fixed-width.scss" />
+    <Content Include="Content\web-fonts-with-css\scss\_icons.scss" />
+    <Content Include="Content\web-fonts-with-css\scss\_larger.scss" />
+    <Content Include="Content\web-fonts-with-css\scss\_list.scss" />
+    <Content Include="Content\web-fonts-with-css\scss\_mixins.scss" />
+    <Content Include="Content\web-fonts-with-css\scss\_rotated-flipped.scss" />
+    <Content Include="Content\web-fonts-with-css\scss\_screen-reader.scss" />
+    <Content Include="Content\web-fonts-with-css\scss\_stacked.scss" />
+    <Content Include="Content\web-fonts-with-css\scss\_variables.scss" />
+    <Content Include="Content\web-fonts-with-css\webfonts\fa-brands-400.eot" />
+    <Content Include="Content\web-fonts-with-css\webfonts\fa-brands-400.ttf" />
+    <Content Include="Content\web-fonts-with-css\webfonts\fa-brands-400.woff" />
+    <Content Include="Content\web-fonts-with-css\webfonts\fa-brands-400.woff2" />
+    <Content Include="Content\web-fonts-with-css\webfonts\fa-regular-400.eot" />
+    <Content Include="Content\web-fonts-with-css\webfonts\fa-regular-400.ttf" />
+    <Content Include="Content\web-fonts-with-css\webfonts\fa-regular-400.woff" />
+    <Content Include="Content\web-fonts-with-css\webfonts\fa-regular-400.woff2" />
+    <Content Include="Content\web-fonts-with-css\webfonts\fa-solid-900.eot" />
+    <Content Include="Content\web-fonts-with-css\webfonts\fa-solid-900.ttf" />
+    <Content Include="Content\web-fonts-with-css\webfonts\fa-solid-900.woff" />
+    <Content Include="Content\web-fonts-with-css\webfonts\fa-solid-900.woff2" />
+    <None Include="Properties\PublishProfiles\sps-qa.pubxml" />
     <None Include="Reports\BillingDS.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>

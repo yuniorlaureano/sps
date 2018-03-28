@@ -73,6 +73,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DatatableColumnMetadata.cs" />
+    <Compile Include="DatatableIEnumerableMetadata.cs" />
     <Compile Include="DBConnections\MSSQLConnection.cs" />
     <Compile Include="DBConnections\OracleConnection.cs" />
     <Compile Include="Enums\Enumerations.cs" />

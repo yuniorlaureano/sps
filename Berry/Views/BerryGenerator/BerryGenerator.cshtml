@@ -99,8 +99,10 @@
 
                                     <!--Nav tabs-->
                                     <ul class="nav nav-tabs">
+                                        <li><a href="#" data-url="@Url.Action("GetPostGeneratedXlsxReport", "BerryGenerator")" data-download-url="@Url.Action("GetPostGeneratedXlsxReport", "BerryGenerator")" id="download-pg-gn-report" class="btn btn-warning text-dark"><i class="fas fa-file-excel"></i> Descargar reporte gerar</a></li>
                                         <li class="active"><a data-toggle="tab" href="#demo-tabs-box-1">Semanas</a></li>
                                         <li><a data-toggle="tab" href="#demo-tabs-box-2">Gráfica</a></li>
+                                        <li><a data-toggle="tab" href="#demo-tabs-box-3">Data tabulada</a></li>
                                     </ul>
 
                                 </div>
@@ -113,23 +115,38 @@
                                 <!--Tabs content-->
                                 <div class="tab-content">
                                     <div id="demo-tabs-box-1" class="tab-pane fade in active">
-                                        <p class="text-main text-lg mar-no">Semanas</p>
+                                        @*<p class="text-main text-lg mar-no">Semanas</p>*@
                                         <div class="panel-body" data-url="@Url.Action("GetOpenedWeekDetailsByDate", "BerryGenerator")" id="panel-body-canv-wee-details">
                                             <div class="row">
                                             </div>
                                         </div>
                                     </div>
                                     <div id="demo-tabs-box-2" class="tab-pane fade">
-                                        <p class="text-main text-lg mar-no">Resumen por <span>libros</span></p>
+                                        @*<p class="text-main text-lg mar-no">Resumen por <span>libros</span></p>*@
                                         <div class="row">
                                             <div class="col-sm-12" id="post-berry-generated-chart-parent">
-                                                <!--Flot Line Chart placeholder-->
-                                                <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-                                                @*<div id="demo-flot-line" style="height:312px"></div>*@
-                                                @*<div id="post-berry-generated-chart" style="height: 370px; width: 100%;" data-url="@Url.Action("GetPostGeneratedBerryByDate", "BerryGenerator")"></div>*@
-                                                <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
                                                 <div id="post-berry-generated-chart" style="height: 370px; width: 100%;" data-url="@Url.Action("GetPostGeneratedBerryBarByDate", "BerryGenerator")"></div>
                                             </div>                                            
+                                        </div>
+                                    </div>
+                                    <div id="demo-tabs-box-3" class="tab-pane fade">
+                                        @*<p class="text-main text-lg mar-no">Resumen por <span>Data tabulada</span></p>*@
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <table id="tbl-postgenerated-tabular-data" class="table table-hover table-striped table-bordered" width="100%">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Book</th>
+                                                            <th>PI</th>
+                                                            <th>NI</th>
+                                                            <th>Increase</th>
+                                                            <th>Decrease</th>
+                                                            <th>Cancel</th>
+                                                            <th>Neto</th>
+                                                        </tr>
+                                                    </thead>
+                                                </table>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>                                
@@ -147,7 +164,7 @@
 
 @section scripts{
     
-    <script src="@Url.Content("~/js/datepicker/daterangepicker.js")"></script>
+    @*<script src="@Url.Content("~/js/datepicker/daterangepicker.js")"></script>*@
     <script src="@Url.Content("~/plugins/bootbox/bootbox.min.js")"></script>
     <script src="@Url.Content("~/js/demo/ui-modals.js")"></script>
     <script src="@Url.Content("~/js/demo/ui-alerts.js")"></script>
@@ -156,20 +173,5 @@
     <script src="@Url.Content("~/plugins/bootstrap-select/bootstrap-select.min.js")"></script>
     <script src="@Url.Content("~/js/Utils.js")"></script>
     <script src="@Url.Content("~/js/berryGenerator.js")"></script><!--"~/js/berryGenerator.js"-->
-
-    <script>
-        $('#weekRange').daterangepicker({
-            "showDropdowns": true,
-            "timePickerIncrement": 1,
-            "autoApply": true,
-            "startDate": Date.now,
-            "endDate": Date.now,
-            "opens": "left",
-            "drops": "down",
-            "buttonClasses": "btn btn-sm",
-            "applyClass": "btn-success",
-            "cancelClass": "btn-default"
-        });
-    </script>
 }
 

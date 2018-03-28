@@ -1,6 +1,9 @@
 ﻿using Berry.Models;
 using Berry.Utils;
 using DBModel.DbConnections;
+using DocumentFormat.OpenXml;
+using DocumentFormat.OpenXml.Packaging;
+using DocumentFormat.OpenXml.Spreadsheet;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -823,6 +826,143 @@ namespace Berry.DBConsultor
             DataTable dt = oraCon.ExecuteStatementWithCursor("berry.GET_POST_BERRY_GN_BAR", args, true, true);
             return dt;
         }
-        #endregion 
+        #endregion
+
+        /// <summary>
+        /// Escribe el reporte postberrygenerated a excel.
+        /// </summary>
+        /// <param name="startDate"></param>
+        /// <param name="endDate"></param>
+        /// <param name="sheetName"></param>
+        /// <param name="fileName"></param>
+        /// <param name="savingPath"></param>
+        /// <returns></returns>
+        public string ExportPostGeneratedWeeklyReport(string startDate, string endDate, string sheetName, string fileName, string savingPath)
+        {
+            oraCon = new OracleDBConnection(oraConnName);
+            List<DbParameter> args = new List<DbParameter>();
+            args.Add(oraCon.getNewParameter("IN_START_DATE", startDate));
+            args.Add(oraCon.getNewParameter("IN_END_DATE", endDate));
+            args.Add(oraCon.getNewCursorParameter("RESULTSET"));
+            DataTable dt = oraCon.ExecuteStatementWithCursor("berry.GET_POST_BERRY_GN_RPORT", args, true, true);
+
+            return WriteToExcel( dt, sheetName, fileName, savingPath);
+        }
+
+        /// <summary>
+        /// Generar un archivo de excel a partir de un datatable
+        /// </summary>
+        /// <param name="table">Datatle</param>
+        /// <param name="sheetName">Nombre de la hoja de excel</param>
+        /// <param name="fileName">Nombre de archivo de excel</param>
+        /// <param name="savingPath">Ruta donde se almacena el archivo</param>
+        /// <returns></returns>
+        public string WriteToExcel(DataTable table, string sheetName, string fileName, string savingPath)
+        {
+            string archivo = savingPath + fileName + ".xlsx";
+            List<string> header = GetDataTableHeader(table.Columns);
+
+            using (SpreadsheetDocument workbook = SpreadsheetDocument.Create(archivo, SpreadsheetDocumentType.Workbook))
+            {
+                OpenXmlWriter writer;
+
+                workbook.AddWorkbookPart();
+                WorksheetPart wsp = workbook.WorkbookPart.AddNewPart<WorksheetPart>();
+
+                writer = OpenXmlWriter.Create(wsp);
+                writer.WriteStartElement(new Worksheet());
+                writer.WriteStartElement(new SheetData());
+
+                WriteExcelHeader(header.ToArray(), writer);
+                WriteExcelValues(table, header, writer);
+
+                writer.WriteEndElement();
+                writer.WriteEndElement();
+                writer.Close();
+
+                writer = OpenXmlWriter.Create(workbook.WorkbookPart);
+                writer.WriteStartElement(new Workbook());
+                writer.WriteStartElement(new Sheets());
+
+                writer.WriteElement(new Sheet()
+                {
+                    Name = sheetName,
+                    SheetId = 1,
+                    Id = workbook.WorkbookPart.GetIdOfPart(wsp)
+                });
+
+                writer.WriteEndElement();
+                writer.WriteEndElement();
+                writer.Close();
+
+                workbook.Close();
+            }
+
+            return archivo;
+        }
+
+        /// <summary>
+        /// Escribe el las columnas de datatable, al header del excel 
+        /// </summary>
+        /// <param name="header">Lista con las columnas del datatable</param>
+        /// <param name="writer">Objeto excel sobre el que se escribira</param>
+        public void WriteExcelHeader(string[] header, OpenXmlWriter writer)
+        {
+            List<OpenXmlAttribute> row = new List<OpenXmlAttribute> { new OpenXmlAttribute("r", null, "1") };
+            writer.WriteStartElement(new Row(), row);
+            List<OpenXmlAttribute> cell = new List<OpenXmlAttribute> { new OpenXmlAttribute("t", null, "inlineStr") };
+            foreach (string h in header)
+            {
+                writer.WriteStartElement(new Cell(), cell);
+                writer.WriteElement(new InlineString(new Text(h)));
+                writer.WriteEndElement();
+            }
+
+            writer.WriteEndElement();
+        }
+
+        /// <summary>
+        /// Escribe los rows de un datatbale a excel
+        /// </summary>
+        /// <param name="table">Datatle</param>
+        /// <param name="header">Lista con las columnas del datatable</param>
+        /// <param name="writer">Objeto excel sobre el que se escribira</param>
+        public void WriteExcelValues(DataTable table, List<string> header, OpenXmlWriter writer)
+        {
+            List<OpenXmlAttribute> row;
+            List<OpenXmlAttribute> cell = new List<OpenXmlAttribute> { new OpenXmlAttribute("t", null, "inlineStr") };
+            //List<OpenXmlAttribute> intCell = new List<OpenXmlAttribute> { new OpenXmlAttribute("t", null, "n") };
+
+            for (int i = 1; i < table.Rows.Count; i++)
+            {
+                row = new List<OpenXmlAttribute> { new OpenXmlAttribute("r", null, (i + 1).ToString()) };
+                writer.WriteStartElement(new Row(), row);
+
+                foreach (string th in header)
+                {
+                    writer.WriteStartElement(new Cell(), cell);
+                    writer.WriteElement(new InlineString(new Text(table.Rows[i-1][th].ToString())));
+                    writer.WriteEndElement();
+                }
+
+                writer.WriteEndElement();
+            }
+        }
+
+        /// <summary>
+        /// Extrae las columnas de un datatable, y lo escribe a una lista de string
+        /// </summary>
+        /// <param name="columns">Las columnas del datatable</param>
+        /// <returns>List<string></returns>
+        private List<string> GetDataTableHeader(DataColumnCollection columns)
+        {
+            List<string> header = new List<string>();
+            foreach (DataColumn dtc in columns)
+            {
+                header.Add(dtc.ColumnName);
+            }
+
+            return header;
+        }
     }
 }
