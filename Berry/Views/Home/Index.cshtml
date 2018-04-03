@@ -2,24 +2,6 @@
     ViewBag.Title = "Home Page";
 }
 
-@section styles {
-    <link href="@Url.Content("~/plugins/bootstrap-datepicker/bootstrap-datepicker.css")" rel="stylesheet" />
-    <link href="@Url.Content("~/css/datepicker/daterangepicker.css")" rel="stylesheet" />
-
-    <style type="text/css">
-        .demo {
-            position: relative;
-        }
-
-            .demo i {
-                position: absolute;
-                bottom: 10px;
-                right: 24px;
-                top: auto;
-                cursor: pointer;
-            }
-    </style>
-}
 <section class="featured">
 
     <div class="boxed">
@@ -33,26 +15,44 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="panel">
-                            @*<div class="panel-heading">
-                                <h3 class="panel-title">Area Chart</h3>
-                            </div>*@
                             <div class="panel-body">
                                 <!--Morris Area Chart placeholder-->
                                 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-                                <div id="chart-cls-opn-rn-week" style="height: 300px; width: 100%;"></div>
+                                <div id="chart-cls-opn-rn-week" data-url="@Url.Action("GetDashboardRnCount","Home")" style="height: 300px; width: 100%;"></div>
+                                <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="panel">
+                            <div class="panel-body">
+                                <!--Morris Area Chart placeholder-->
+                                <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                                <div data-url="@Url.Action("GetDashboardRnCount","Home")" style="height: 300px; width: 100%; overflow-y:scroll; overflow-x:hidden;">
+                                    <h4>Semanas cerradas</h4>
+                                     <table id="tbl-closed-week-dash" data-url="@Url.Action("GetClosedWeek","CanvWeek")" class="table table-hover table-striped table-bordered" width="100%">
+                                        <thead>
+                                            <tr>
+                                                <th>Canv Week</th>
+                                                <th>Fecha Inicio</th>
+                                                <th>Fecha FIn</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
                                 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-12">
-                        <div class="panel panel-bordered-info panel-colorful">
+                        <div class="panel" id="last-run-week-panel">
                             <div class="panel-heading">
                                 <h3 class="panel-title">Última semana corrida</h3>
                             </div>
                             <div class="panel-body">
                                 <div class="row">
                                     <div class="col-sm-12">
-                                        <table id="tbl-generated-lastweek" class="table table-hover table-striped table-bordered" width="100%">
+                                        <table id="tbl-generated-lastweek" data-url="@Url.Action("GetLastGeneratedWeek","Home")" class="table table-hover table-striped table-bordered" width="100%">
                                             <thead>
                                                 <tr>
                                                     <th>Book</th>

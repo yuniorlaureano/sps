@@ -45,45 +45,45 @@ namespace Berry.Controllers
 
         }
 
-        public ContentResult GetPivotReport(int edition, int periodID)
-        {
-            var user = (User)Session["user"];
+        //public ContentResult GetPivotReport(int edition, int periodID)
+        //{
+        //    var user = (User)Session["user"];
 
 
-            db = new BerryDB();
-            try
-            {
-                DataSet payPeriod = db.GetPayPeriodPivotReport(edition, periodID, user.grp_codigo, user.usr_codigo);
-                return Content(JsonConvert.SerializeObject(payPeriod), "json/application");
+        //    db = new BerryDB();
+        //    try
+        //    {
+        //        DataSet payPeriod = db.GetPayPeriodPivotReport(edition, periodID, user.grp_codigo, user.usr_codigo);
+        //        return Content(JsonConvert.SerializeObject(payPeriod), "json/application");
 
 
-            }
-            catch (Exception e)
-            {
-                throw;
-            }
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        throw;
+        //    }
 
-        }
+        //}
 
-        public DataSet GetPivotReportDT(int edition, int periodID)
-        {
-            var user = (User)Session["user"];
-
-
-            db = new BerryDB();
-            try
-            {
-                DataSet payPeriod = db.GetPayPeriodPivotReport(edition, periodID, user.grp_codigo, user.usr_codigo);
-                return payPeriod;
+        //public DataSet GetPivotReportDT(int edition, int periodID)
+        //{
+        //    var user = (User)Session["user"];
 
 
-            }
-            catch (Exception e)
-            {
-                throw;
-            }
+        //    db = new BerryDB();
+        //    try
+        //    {
+        //        DataSet payPeriod = db.GetPayPeriodPivotReport(edition, periodID, user.grp_codigo, user.usr_codigo);
+        //        return payPeriod;
 
-        }
+
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        throw;
+        //    }
+
+        //}
 
 
         public FileContentResult GetFile(string filename)

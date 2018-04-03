@@ -7,9 +7,10 @@ namespace Berry.Models
 {
     public class User
     {
-        public int usr_codigo { get; set; }
-        public string grp_codigo { get; set; }
-        public string usr_nivel { get; set; }
+        public int UserId { get; set; }
+        public string UserName { get; set; }
+        public List<string> Roles { get; set; }
+        public string Nivel { get; set; }
 
     }
 

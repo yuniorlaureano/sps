@@ -565,16 +565,29 @@ namespace Berry.DBConsultor
             return dt;
         }
 
-        public User GetRoles(string userCode, string userName, string moduleCode)
+        public User GetRoles(string userName, string moduleCode)
         {
             sqlCon = new MSSQLConnection("BerrySQLDBEVA_RD");
             List<DbParameter> args = new List<DbParameter>();
             args.Add(sqlCon.getNewParameter("@userCode", ""));
             args.Add(sqlCon.getNewParameter("@userName", userName));
             args.Add(sqlCon.getNewParameter("@pyc_codigo", moduleCode));
-            DataTable dt = sqlCon.ExecuteStatement("dbo.sp_GetRoles ", args);
+            DataTable dt = sqlCon.ExecuteStatement("dbo.sp_GetRoles", args);
+            
+            User user = null;
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                user = new User();
+                user.Roles = new List<string>();
 
-            User user = Converter.DataTableToType<User>(dt);
+                user.UserId = Convert.ToInt32(dt.Rows[0]["usr_codigo"].ToString());
+                user.UserName = userName;
+
+                foreach (DataRow item in dt.Rows)
+                {
+                    user.Roles.Add(item["grp_codigo"].ToString());
+                }
+            }
 
             return user;
         }
@@ -963,6 +976,33 @@ namespace Berry.DBConsultor
             }
 
             return header;
+        }
+
+        /// <summary>
+        /// Obtiene la ultima semana gerada
+        /// </summary>
+        /// <param name="database"></param>
+        /// <returns>DataTable</returns>
+        public DataTable GetLastGeneratedWeek()
+        {
+            oraCon = new OracleDBConnection(oraConnName);
+            List<DbParameter> args = new List<DbParameter>();
+            args.Add(oraCon.getNewCursorParameter("resultset"));
+
+            DataTable dt = oraCon.ExecuteStatementWithCursor("berry.GET_LAST_RUN", args, true, true);
+
+            return dt;
+        }
+
+        public DataTable GetDashboardRnCount()
+        {
+            oraCon = new OracleDBConnection(oraConnName);
+            List<DbParameter> args = new List<DbParameter>();
+            args.Add(oraCon.getNewCursorParameter("resultset"));
+
+            DataTable dt = oraCon.ExecuteStatementWithCursor("berry.GET_DASBOARD_NR_COUNT", args, true, true);
+
+            return dt;
         }
     }
 }

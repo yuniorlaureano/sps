@@ -1,4 +1,6 @@
 ﻿using Berry.DBConsultor;
+using Berry.Enums;
+using Berry.Utils;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -9,6 +11,7 @@ using System.Web.Mvc;
 
 namespace Berry.Controllers
 {
+    [CustomAuthorize(Roles.Administrator)]
     public class CanvWeekController : Controller
     {
         BerryDB db;
