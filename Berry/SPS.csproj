@@ -152,6 +152,7 @@
     <Compile Include="Controllers\CorrectionTransController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\RegionalReportController.cs" />
+    <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\SalesReportController.cs" />
     <Compile Include="Controllers\UnitReportController.cs" />
     <Compile Include="Enums\Enums.cs" />
@@ -417,6 +418,7 @@
     <Content Include="js\openWeek.js" />
     <Content Include="js\payPeriod.js" />
     <Content Include="js\regionReport.js" />
+    <Content Include="js\report.js" />
     <Content Include="js\Underscore.js" />
     <Content Include="js\unitReport.js" />
     <Content Include="js\Utils.js" />
@@ -2065,6 +2067,7 @@
     <Content Include="Views\CanvWeek\Index.cshtml" />
     <Content Include="Views\CanvWeek\Open.cshtml" />
     <Content Include="Views\CanvWeek\Close.cshtml" />
+    <Content Include="Views\Report\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

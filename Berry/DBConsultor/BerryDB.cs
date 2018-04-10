@@ -153,12 +153,13 @@ namespace Berry.DBConsultor
         #endregion Universe Compare
 
         #region Berry Process
-        public void GenerateBerry(string startWeek, string endWeek)
+        public void GenerateBerry(string startWeek, string endWeek, int userId)
         {
             oraCon = new OracleDBConnection(oraConnName);
             List<DbParameter> args = new List<DbParameter>();
             args.Add(oraCon.getNewParameter("IN_START_DATE", startWeek));
             args.Add(oraCon.getNewParameter("IN_END_DATE", endWeek));
+            args.Add(oraCon.getNewParameter("P_USER", userId));
             DataTable dt = oraCon.ExecuteStatementWithCursor("berry.SP_BERRY", args, true, true);
         }
 
@@ -589,7 +590,7 @@ namespace Berry.DBConsultor
                 }
             }
 
-            return user;
+            return user == null ? new User() { UserId = -1, Roles = new List<string> { "Unauthorize-param" } } : user; 
         }
         #endregion Common
 
@@ -739,6 +740,22 @@ namespace Berry.DBConsultor
         /// </summary>
         /// <param name="database"></param>
         /// <returns>DataTable</returns>
+        public DataTable GetGenaratedWeekByDb()
+        {
+            oraCon = new OracleDBConnection(oraConnName);
+            List<DbParameter> args = new List<DbParameter>();
+            args.Add(oraCon.getNewCursorParameter("resultset"));
+
+            DataTable dt = oraCon.ExecuteStatementWithCursor("berry.AUTCMP_GNT_WEEK_BY_DB", args, true, true);
+
+            return dt;
+        }
+
+        /// <summary>
+        /// Obtiene los canv_week
+        /// </summary>
+        /// <param name="database"></param>
+        /// <returns>DataTable</returns>
         public DataTable GetWeekDetialByDb(string database)
         {
             oraCon = new OracleDBConnection(oraConnName);
@@ -764,6 +781,22 @@ namespace Berry.DBConsultor
             args.Add(oraCon.getNewParameter("IN_WEEK", week));
             args.Add(oraCon.getNewCursorParameter("RESULTSET"));
             DataTable dt = oraCon.ExecuteStatementWithCursor("berry.AUTCMP_ClD_DATE_BY_WEEK", args, true, true);
+            return dt;
+        }
+
+        /// <summary>
+        /// Optine las fechas conrespondiente al canvweek
+        /// </summary>
+        /// <param name="db"></param>
+        /// <param name="canvEdition"></param>
+        /// <returns>DataTable</returns>
+        public DataTable GetActiveGnDateByCanvWeek(int week)
+        {
+            oraCon = new OracleDBConnection(oraConnName);
+            List<DbParameter> args = new List<DbParameter>();
+            args.Add(oraCon.getNewParameter("IN_WEEK", week));
+            args.Add(oraCon.getNewCursorParameter("RESULTSET"));
+            DataTable dt = oraCon.ExecuteStatementWithCursor("berry.AUTCMP_GN_ClD_DATE_BY_WEEK", args, true, true);
             return dt;
         }
 
@@ -801,6 +834,24 @@ namespace Berry.DBConsultor
             args.Add(oraCon.getNewParameter("IN_END_DATE", endDate));
             args.Add(oraCon.getNewCursorParameter("RESULTSET"));
             DataTable dt = oraCon.ExecuteStatementWithCursor("berry.GET_CANV_WEEK_DETAILS", args, true, true);
+            return dt;
+        }
+
+        /// <summary>
+        /// Obtiene los detalles de los canv_week por fecha.
+        /// </summary>
+        /// <param name="database"></param>
+        /// <param name="startDate"></param>
+        /// <param name="endDate"></param>
+        /// <returns>DataTable</returns>
+        public DataTable GetOpenedGnWeekDetailsByDate(string startDate, string endDate)
+        {
+            oraCon = new OracleDBConnection(oraConnName);
+            List<DbParameter> args = new List<DbParameter>();
+            args.Add(oraCon.getNewParameter("IN_START_DATE", startDate));
+            args.Add(oraCon.getNewParameter("IN_END_DATE", endDate));
+            args.Add(oraCon.getNewCursorParameter("RESULTSET"));
+            DataTable dt = oraCon.ExecuteStatementWithCursor("berry.GET_CANV_GN_WEEK_DETAILS", args, true, true);
             return dt;
         }
 
@@ -945,8 +996,8 @@ namespace Berry.DBConsultor
             List<OpenXmlAttribute> row;
             List<OpenXmlAttribute> cell = new List<OpenXmlAttribute> { new OpenXmlAttribute("t", null, "inlineStr") };
             //List<OpenXmlAttribute> intCell = new List<OpenXmlAttribute> { new OpenXmlAttribute("t", null, "n") };
-
-            for (int i = 1; i < table.Rows.Count; i++)
+            int count = (table.Rows.Count + 1);
+            for (int i = 1; i < count; i++)
             {
                 row = new List<OpenXmlAttribute> { new OpenXmlAttribute("r", null, (i + 1).ToString()) };
                 writer.WriteStartElement(new Row(), row);
@@ -1003,6 +1054,30 @@ namespace Berry.DBConsultor
             DataTable dt = oraCon.ExecuteStatementWithCursor("berry.GET_DASBOARD_NR_COUNT", args, true, true);
 
             return dt;
+        }
+
+        public string GetDimmasVsSpsReport(string startDate, string endDate, string sheetName, string fileName, string savingPath)
+        {
+            oraCon = new OracleDBConnection(oraConnName);
+            List<DbParameter> args = new List<DbParameter>();
+            args.Add(oraCon.getNewParameter("IN_START_DATE", startDate));
+            args.Add(oraCon.getNewParameter("IN_END_DATE", endDate));
+            args.Add(oraCon.getNewCursorParameter("RESULTSET"));
+            DataTable dt = oraCon.ExecuteStatementWithCursor("berry.GET_DIMMAS_VS_SP", args, true, true);
+
+            return WriteToExcel(dt, sheetName, fileName, savingPath);
+        }
+
+        public string GetFinancialReport(string startDate, string endDate, string sheetName, string fileName, string savingPath)
+        {
+            oraCon = new OracleDBConnection(oraConnName);
+            List<DbParameter> args = new List<DbParameter>();
+            args.Add(oraCon.getNewParameter("IN_START_DATE", startDate));
+            args.Add(oraCon.getNewParameter("IN_END_DATE", endDate));
+            args.Add(oraCon.getNewCursorParameter("RESULTSET"));
+            DataTable dt = oraCon.ExecuteStatementWithCursor("berry.GET_FINANCIAL_REPORT", args, true, true);
+
+            return WriteToExcel(dt, sheetName, fileName, savingPath);
         }
     }
 }

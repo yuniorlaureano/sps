@@ -1,0 +1,114 @@
+﻿@section styles {
+    <link href="@Url.Content("~/plugins/bootstrap-datepicker/bootstrap-datepicker.css")" rel="stylesheet" />
+}
+<section class="featured">
+
+    <div class="boxed">
+
+        <!--CONTENT CONTAINER-->
+        <!--===================================================-->
+        <div id="content-container">
+
+            <div id="page-content">
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="panel">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Formulario de reportes</h3>
+                            </div>
+                            <!--Block Styled Form -->
+                            <!--===================================================-->
+                            <form data-url="@Url.Action("GetGenaratedWeekByDb", "BerryGenerator")" id="form-berry-generator">
+                                <div class="panel-body">
+                                    <div class="col-sm-12">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label class="control-label">Semanas</label>
+                                                    <select class="selectpicker form-control" id="canvweek" data-show-subtext="true" data-url="@Url.Action("GetActiveGnDateByCanvWeek", "BerryGenerator")"></select>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label class="control-label" for="weekly-fecha-desde">Fecha desde</label>
+                                                    <input type="text" class="form-control date" id="weekly-fecha-desde">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label class="control-label" for="weekly-fecha-hasta">Fecha hasta</label>
+                                                    <input type="text" class="form-control date" id="weekly-fecha-hasta">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                            <!--===================================================-->
+                            <!--End Block Styled Form -->
+                        </div>
+                    </div>
+                </div>
+                <div class="row" id="panel-canv-wee-details">
+                    <div class="col-sm-12">
+                        <!--Panel with Tabs-->
+                        <!--===================================================-->
+                        <div class="panel">
+
+                            <!--Panel heading-->
+                            
+
+                            <!--Panel body-->
+                            <div class="panel-body">
+                                <!--Tabs content-->
+                                <div class="tab-content">
+                                    <div id="demo-tabs-box-1" class="tab-pane fade in active">
+                                        <div class="text-center">
+
+                                            <!--Rounded Buttons-->
+                                            <!--===================================================-->
+                                            <button class="btn btn-default btn-rounded weekle-report" data-url="@Url.Action("DimmasVsSps", "Report")" data-download-url="@Url.Action("DimmasVsSps", "Report")">Dimmas vs weeke</button>
+                                            <button class="btn btn-default btn-rounded weekle-report" data-url="@Url.Action("GetFinancialReport", "Report")" data-download-url="@Url.Action("GetFinancialReport", "Report")">Finanzas</button>
+                                            <button class="btn btn-default btn-rounded weekle-report" data-url="@Url.Action("DimmasVsSps", "Report")" data-download-url="@Url.Action("DimmasVsSps", "Report")" disabled>Unidad</button>
+                                            <button class="btn btn-default btn-rounded weekle-report" data-url="@Url.Action("DimmasVsSps", "Report")" data-download-url="@Url.Action("DimmasVsSps", "Report")" disabled>Regional</button>
+                                            <button class="btn btn-default btn-rounded weekle-report" data-url="@Url.Action("GetPostGeneratedXlsxReport", "BerryGenerator")" data-download-url="@Url.Action("GetPostGeneratedXlsxReport", "BerryGenerator")">Reporte generar</button>
+                                            <!--===================================================-->
+                                        </div>
+                                        <hr />
+                                        <div class="panel-body" data-url="@Url.Action("GetOpenedGnWeekDetailsByDate", "BerryGenerator")" id="panel-body-canv-wee-details">
+                                            <div class="row">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--===================================================-->
+                        <!--End of panel with tabs-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+@section scripts{
+
+    @*<script src="@Url.Content("~/js/datepicker/daterangepicker.js")"></script>*@
+    <script src="@Url.Content("~/plugins/bootbox/bootbox.min.js")"></script>
+    <script src="@Url.Content("~/js/demo/ui-modals.js")"></script>
+    <script src="@Url.Content("~/js/demo/ui-alerts.js")"></script>
+    <script src="@Url.Content("~/plugins/datatables/media/js/jquery.dataTables.js")"></script>
+    <script src="@Url.Content("~/plugins/datatables/media/js/dataTables.bootstrap.js")"></script>
+    <script src="@Url.Content("~/plugins/bootstrap-select/bootstrap-select.min.js")"></script>
+    <script src="@Url.Content("~/js/Utils.js")"></script>
+    <script src="@Url.Content("~/js/report.js")"></script><!--"~/js/berryGenerator.js"-->
+}

@@ -1,5 +1,6 @@
 ﻿using Berry.DBConsultor;
 using Berry.Enums;
+using Berry.Models;
 using Berry.Utils;
 using Newtonsoft.Json;
 using System;
@@ -29,7 +30,8 @@ namespace Berry.Controllers
             db = new BerryDB();
             try
             {
-                db.GenerateBerry(startWeek, endWeek);
+                int userId = ((User)(Session["user"])).UserId;
+                db.GenerateBerry(startWeek, endWeek, userId);
                 return Json("Berry generado", JsonRequestBehavior.AllowGet);
 
             } catch(Exception){
@@ -100,6 +102,21 @@ namespace Berry.Controllers
             return Json(JsonConvert.SerializeObject(log), JsonRequestBehavior.AllowGet);
         }
 
+
+        /// <summary>
+        /// Obtiene los canv_week
+        /// </summary>
+        /// <param name="database"></param>
+        /// <returns>DataTable</returns>
+        public JsonResult GetGenaratedWeekByDb()
+        {
+            db = new BerryDB();
+
+            DataTable log = db.GetGenaratedWeekByDb();
+
+            return Json(JsonConvert.SerializeObject(log), JsonRequestBehavior.AllowGet);
+        }
+
         /// <summary>
         /// Obtiene los detalles de los canvweek
         /// </summary>
@@ -130,6 +147,21 @@ namespace Berry.Controllers
         }
 
         /// <summary>
+        /// Optine las fechas conrespondiente al canvweek
+        /// </summary>
+        /// <param name="db"></param>
+        /// <param name="canvEdition"></param>
+        /// <returns>DataTable</returns>
+        public JsonResult GetActiveGnDateByCanvWeek(int week)
+        {
+            db = new BerryDB();
+
+            DataTable log = db.GetActiveGnDateByCanvWeek(week);
+
+            return Json(JsonConvert.SerializeObject(log), JsonRequestBehavior.AllowGet);
+        }
+
+        /// <summary>
         /// Optine los registros de weekly por fecha
         /// </summary>
         /// <param name="db"></param>
@@ -154,6 +186,19 @@ namespace Berry.Controllers
         {
             db = new BerryDB();
             DataTable log = db.GetOpenedWeekDetailsByDate(startDate, endDate);
+            return Json(JsonConvert.SerializeObject(log), JsonRequestBehavior.AllowGet);
+        }
+
+        /// <summary>
+        /// Obtiene los detalles de los canv_week por fecha.
+        /// </summary>
+        /// <param name="startDate"></param>
+        /// <param name="endDate"></param>
+        /// <returns>JsonResult</returns>
+        public JsonResult GetOpenedGnWeekDetailsByDate(string startDate, string endDate)
+        {
+            db = new BerryDB();
+            DataTable log = db.GetOpenedGnWeekDetailsByDate(startDate, endDate);
             return Json(JsonConvert.SerializeObject(log), JsonRequestBehavior.AllowGet);
         }
 
@@ -195,11 +240,12 @@ namespace Berry.Controllers
         public JsonResult GetPostGeneratedXlsxReport(string startDate, string endDate)
         {
             db = new BerryDB();
+            int userId = ((User)(Session["user"])).UserId;
             string file = db.ExportPostGeneratedWeeklyReport(
                 startDate, 
                 endDate,
                 "general",
-                "reporte-general",
+                "reporte-general-"+ userId,
                 Server.MapPath("~/Content/Files/")
             );
 
@@ -215,8 +261,9 @@ namespace Berry.Controllers
         [HttpGet]
         public FileResult GetPostGeneratedXlsxReport()
         {
-            string file = Server.MapPath("~/Content/Files/reporte-general.xlsx");
-            return File(file, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+            int userId = ((User)(Session["user"])).UserId;
+            string file = Server.MapPath("~/Content/Files/reporte-general-"+ userId +".xlsx");
+            return File(file, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "reporte-general-"+ userId +".xlsx");
         }
 
     }
