@@ -1079,5 +1079,18 @@ namespace Berry.DBConsultor
 
             return WriteToExcel(dt, sheetName, fileName, savingPath);
         }
+
+        public DataTable GetFinancialData(string startDate, string endDate)
+        {
+            oraCon = new OracleDBConnection(oraConnName);
+            List<DbParameter> args = new List<DbParameter>();
+            args.Add(oraCon.getNewParameter("IN_START_DATE", startDate));
+            args.Add(oraCon.getNewParameter("IN_END_DATE", endDate));
+            args.Add(oraCon.getNewCursorParameter("RESULTSET"));
+            DataTable dt = oraCon.ExecuteStatementWithCursor("berry.GET_FINANCIAL_REPORT", args, true, true);
+
+            return dt;
+        }
     }
+
 }

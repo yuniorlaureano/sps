@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="finance" targetNamespace="http://tempuri.org/finance.xsd" xmlns:mstns="http://tempuri.org/finance.xsd" xmlns="http://tempuri.org/finance.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="finance" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="finance" msprop:Generator_UserDSName="finance">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="finance" msprop:Generator_TableClassName="financeDataTable" msprop:Generator_TableVarName="tablefinance" msprop:Generator_TablePropName="_finance" msprop:Generator_RowDeletingName="financeRowDeleting" msprop:Generator_RowChangingName="financeRowChanging" msprop:Generator_RowEvHandlerName="financeRowChangeEventHandler" msprop:Generator_RowDeletedName="financeRowDeleted" msprop:Generator_UserTableName="finance" msprop:Generator_RowChangedName="financeRowChanged" msprop:Generator_RowEvArgName="financeRowChangeEvent" msprop:Generator_RowClassName="financeRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="DIRECTORY_CATEGORY" msprop:Generator_ColumnVarNameInTable="columnDIRECTORY_CATEGORY" msprop:Generator_ColumnPropNameInRow="DIRECTORY_CATEGORY" msprop:Generator_ColumnPropNameInTable="DIRECTORY_CATEGORYColumn" msprop:Generator_UserColumnName="DIRECTORY_CATEGORY" type="xs:string" minOccurs="0" />
+              <xs:element name="DIRECTORY" msprop:Generator_ColumnVarNameInTable="columnDIRECTORY" msprop:Generator_ColumnPropNameInRow="DIRECTORY" msprop:Generator_ColumnPropNameInTable="DIRECTORYColumn" msprop:Generator_UserColumnName="DIRECTORY" type="xs:string" minOccurs="0" />
+              <xs:element name="DIRECTORY_NAME" msprop:Generator_ColumnVarNameInTable="columnDIRECTORY_NAME" msprop:Generator_ColumnPropNameInRow="DIRECTORY_NAME" msprop:Generator_ColumnPropNameInTable="DIRECTORY_NAMEColumn" msprop:Generator_UserColumnName="DIRECTORY_NAME" type="xs:string" minOccurs="0" />
+              <xs:element name="TOTAL_ASIGNADO" msprop:Generator_ColumnVarNameInTable="columnTOTAL_ASIGNADO" msprop:Generator_ColumnPropNameInRow="TOTAL_ASIGNADO" msprop:Generator_ColumnPropNameInTable="TOTAL_ASIGNADOColumn" msprop:Generator_UserColumnName="TOTAL_ASIGNADO" type="xs:decimal" minOccurs="0" />
+              <xs:element name="CARGOS_TRABAJADO" msprop:Generator_ColumnVarNameInTable="columnCARGOS_TRABAJADO" msprop:Generator_ColumnPropNameInRow="CARGOS_TRABAJADO" msprop:Generator_ColumnPropNameInTable="CARGOS_TRABAJADOColumn" msprop:Generator_UserColumnName="CARGOS_TRABAJADO" type="xs:decimal" minOccurs="0" />
+              <xs:element name="CARGOS_THIS_WEEK" msprop:Generator_ColumnVarNameInTable="columnCARGOS_THIS_WEEK" msprop:Generator_ColumnPropNameInRow="CARGOS_THIS_WEEK" msprop:Generator_ColumnPropNameInTable="CARGOS_THIS_WEEKColumn" msprop:Generator_UserColumnName="CARGOS_THIS_WEEK" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PORCIENTO_COMPLETADO" msprop:Generator_ColumnVarNameInTable="columnPORCIENTO_COMPLETADO" msprop:Generator_ColumnPropNameInRow="PORCIENTO_COMPLETADO" msprop:Generator_ColumnPropNameInTable="PORCIENTO_COMPLETADOColumn" msprop:Generator_UserColumnName="PORCIENTO_COMPLETADO" type="xs:decimal" minOccurs="0" />
+              <xs:element name="NUEVA_VENTA" msprop:Generator_ColumnVarNameInTable="columnNUEVA_VENTA" msprop:Generator_ColumnPropNameInRow="NUEVA_VENTA" msprop:Generator_ColumnPropNameInTable="NUEVA_VENTAColumn" msprop:Generator_UserColumnName="NUEVA_VENTA" type="xs:decimal" minOccurs="0" />
+              <xs:element name="TOTAL_VENTA" msprop:Generator_ColumnVarNameInTable="columnTOTAL_VENTA" msprop:Generator_ColumnPropNameInRow="TOTAL_VENTA" msprop:Generator_ColumnPropNameInTable="TOTAL_VENTAColumn" msprop:Generator_UserColumnName="TOTAL_VENTA" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

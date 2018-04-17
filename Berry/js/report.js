@@ -126,6 +126,22 @@ $(document).ready(function () {
             alertNoty("Debe proveer las fechas", "Info", "danger");
         }
     });
+
+    $(".weekle-report-personalize").on("click", function () {
+
+        var startDate = $('#weekly-fecha-desde').val();
+        var endDate = $('#weekly-fecha-hasta').val();
+
+        if ((startDate !== '') && (endDate !== '')) {
+
+            var url = $(this).attr("data-url") + "?startDate=" + startDate + "&endDate=" + endDate;
+            window.open(url, '_blank');
+           
+        } else {
+
+            alertNoty("Debe proveer las fechas", "Info", "danger");
+        }
+    });
 });
 
 function clearDates() {
