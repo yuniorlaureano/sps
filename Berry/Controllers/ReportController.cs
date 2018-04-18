@@ -107,6 +107,45 @@ namespace Berry.Controllers
             return File(file, mime);
         }
 
+        [HttpGet]
+        public FileResult GetDimmasVsSpsData(string startDate = "01/01/2018", string endDate = "04/01/2018")
+        {
+            string mime = string.Empty;
+            string enconding = string.Empty;
+            string extension = string.Empty;
+            string[] streamIds;
+            db = new BerryDB();
+            //int userId = ((User)(Session["user"])).UserId;
+            DataTable tbl = db.GetDimmasVsSpsData(startDate, endDate);
+
+            Warning[] warnings;
+            LocalReport viewer = new LocalReport();
+            viewer.ReportPath = Server.MapPath("~/Reports/DimmasVsSps/dimmasVsSps.rdlc");
+            ReportDataSource source = new ReportDataSource("dmsvssps", tbl);
+            source.Name = "dmsvssps";
+            viewer.EnableExternalImages = true;
+            viewer.SetParameters(new List<ReportParameter>
+            {
+                new ReportParameter("FechaDesde", startDate),
+                new ReportParameter("FechaHasta", endDate),
+                new ReportParameter("Logo", new Uri(Server.MapPath("~/img/logoPA.PNG")).AbsoluteUri)
+            });
+
+            viewer.DataSources.Add(source);
+            viewer.Refresh();
+
+            byte[] file = viewer.Render(
+                format: "PDF",
+                deviceInfo: null,
+                mimeType: out mime,
+                encoding: out enconding,
+                fileNameExtension: out extension,
+                streams: out streamIds,
+                warnings: out warnings);
+
+            return File(file, mime);
+        }
+
 
     }
 }

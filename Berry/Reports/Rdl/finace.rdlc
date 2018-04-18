@@ -6,28 +6,28 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>0.92477in</Width>
+              <Width>0.75452in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.97685in</Width>
+              <Width>1.73727in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.87269in</Width>
+              <Width>1.24181in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.03935in</Width>
+              <Width>1.28481in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.07061in</Width>
+              <Width>1.16436in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.31019in</Width>
+              <Width>0.53936in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.70602in</Width>
+              <Width>1.17477in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.70602in</Width>
+              <Width>1.09144in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -59,7 +59,7 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
-                        <BackgroundColor>DarkBlue</BackgroundColor>
+                        <BackgroundColor>MidnightBlue</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -93,7 +93,7 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
-                        <BackgroundColor>DarkBlue</BackgroundColor>
+                        <BackgroundColor>MidnightBlue</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -127,7 +127,7 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
-                        <BackgroundColor>DarkBlue</BackgroundColor>
+                        <BackgroundColor>MidnightBlue</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -161,7 +161,7 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
-                        <BackgroundColor>DarkBlue</BackgroundColor>
+                        <BackgroundColor>MidnightBlue</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -195,7 +195,7 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
-                        <BackgroundColor>DarkBlue</BackgroundColor>
+                        <BackgroundColor>MidnightBlue</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -229,7 +229,7 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
-                        <BackgroundColor>DarkBlue</BackgroundColor>
+                        <BackgroundColor>MidnightBlue</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -263,7 +263,7 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
-                        <BackgroundColor>DarkBlue</BackgroundColor>
+                        <BackgroundColor>MidnightBlue</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -297,7 +297,7 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
-                        <BackgroundColor>DarkBlue</BackgroundColor>
+                        <BackgroundColor>MidnightBlue</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -390,7 +390,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!TOTAL_ASIGNADO.Value</Value>
+                              <Value>="$ "&amp;Format(Fields!TOTAL_ASIGNADO.Value, "#,###.00")</Value>
                               <Style>
                                 <FontSize>9pt</FontSize>
                               </Style>
@@ -425,7 +425,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!CARGOS_TRABAJADO.Value</Value>
+                              <Value>="$ "&amp;Format(Fields!CARGOS_TRABAJADO.Value, "#,###.00")</Value>
                               <Style>
                                 <FontSize>9pt</FontSize>
                               </Style>
@@ -460,7 +460,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!CARGOS_THIS_WEEK.Value</Value>
+                              <Value>="$ "&amp;Format(Fields!CARGOS_THIS_WEEK.Value, "#,###.00")</Value>
                               <Style>
                                 <FontSize>9pt</FontSize>
                               </Style>
@@ -530,7 +530,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!NUEVA_VENTA.Value</Value>
+                              <Value>="$ "&amp;Format(Fields!NUEVA_VENTA.Value, "#,###.00")</Value>
                               <Style>
                                 <FontSize>9pt</FontSize>
                               </Style>
@@ -565,7 +565,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!TOTAL_VENTA.Value</Value>
+                              <Value>="$ "&amp;Format(Fields!TOTAL_VENTA.Value, "#,###.00")</Value>
                               <Style>
                                 <FontSize>9pt</FontSize>
                               </Style>
@@ -681,7 +681,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Sum(Fields!TOTAL_ASIGNADO.Value, "CATEGORY_GROUP")</Value>
+                              <Value>="$ "&amp;Format(Sum(Fields!TOTAL_ASIGNADO.Value, "CATEGORY_GROUP"), "#,###.00")</Value>
                               <Style>
                                 <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
@@ -722,7 +722,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Sum(Fields!CARGOS_TRABAJADO.Value, "CATEGORY_GROUP")</Value>
+                              <Value>="$ "&amp;Format(Sum(Fields!CARGOS_TRABAJADO.Value, "CATEGORY_GROUP"), "#,###.00")</Value>
                               <Style>
                                 <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
@@ -763,7 +763,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Sum(Fields!CARGOS_THIS_WEEK.Value, "CATEGORY_GROUP")</Value>
+                              <Value>="$ "&amp;Format(Sum(Fields!CARGOS_THIS_WEEK.Value, "CATEGORY_GROUP"), "#,###.00")</Value>
                               <Style>
                                 <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
@@ -845,7 +845,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Sum(Fields!NUEVA_VENTA.Value, "CATEGORY_GROUP")</Value>
+                              <Value>="$ "&amp;Format(Sum(Fields!NUEVA_VENTA.Value, "CATEGORY_GROUP"), "#,###.00")</Value>
                               <Style>
                                 <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
@@ -886,7 +886,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Sum(Fields!TOTAL_VENTA.Value, "CATEGORY_GROUP")</Value>
+                              <Value>="$ "&amp;Format(Sum(Fields!TOTAL_VENTA.Value, "CATEGORY_GROUP"), "#,###.00")</Value>
                               <Style>
                                 <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
@@ -938,7 +938,7 @@
           <TablixMembers>
             <TablixMember>
               <TablixHeader>
-                <Size>1in</Size>
+                <Size>0.84375in</Size>
                 <CellContents>
                   <Textbox Name="Textbox94">
                     <CanGrow>true</CanGrow>
@@ -963,7 +963,7 @@
                         <Color>LightGrey</Color>
                         <Style>Solid</Style>
                       </Border>
-                      <BackgroundColor>DarkBlue</BackgroundColor>
+                      <BackgroundColor>MidnightBlue</BackgroundColor>
                       <PaddingLeft>2pt</PaddingLeft>
                       <PaddingRight>2pt</PaddingRight>
                       <PaddingTop>2pt</PaddingTop>
@@ -989,7 +989,7 @@
                 </SortExpression>
               </SortExpressions>
               <TablixHeader>
-                <Size>1in</Size>
+                <Size>0.84375in</Size>
                 <CellContents>
                   <Textbox Name="DIRECTORY_CATEGORY1">
                     <CanGrow>true</CanGrow>
@@ -1040,8 +1040,8 @@
         </TablixRowHierarchy>
         <DataSetName>finance</DataSetName>
         <Top>0.06944in</Top>
-        <Height>0.67931in</Height>
-        <Width>9.60648in</Width>
+        <Height>0.6793in</Height>
+        <Width>9.83208in</Width>
         <Style>
           <Border>
             <Style>None</Style>
