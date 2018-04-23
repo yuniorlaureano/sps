@@ -1103,6 +1103,18 @@ namespace Berry.DBConsultor
 
             return dt;
         }
+
+        public DataTable GetUnitData(string startDate, string endDate)
+        {
+            oraCon = new OracleDBConnection(oraConnName);
+            List<DbParameter> args = new List<DbParameter>();
+            args.Add(oraCon.getNewParameter("IN_START_DATE", startDate));
+            args.Add(oraCon.getNewParameter("IN_END_DATE", endDate));
+            args.Add(oraCon.getNewCursorParameter("RESULTSET"));
+            DataTable dt = oraCon.ExecuteStatementWithCursor("berry.GET_REPORT_BY_UNIT", args, true, true);
+
+            return dt;
+        }
     }
 
 }

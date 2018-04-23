@@ -1753,14 +1753,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox52">
+                    <Textbox Name="Textbox10">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!Lneto.Value+Fields!Lpprice.Value</Value>
+                              <Value>=Fields!Amount.Value</Value>
                               <Style>
                                 <FontFamily>Calibri</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -1771,7 +1771,7 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox52</rd:DefaultName>
+                      <rd:DefaultName>Textbox10</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>#e5e5e5</Color>
@@ -1957,7 +1957,7 @@
         <RepeatRowHeaders>true</RepeatRowHeaders>
         <DataSetName>UnitDS</DataSetName>
         <Height>2.03729cm</Height>
-        <Width>25.58128cm</Width>
+        <Width>25.58129cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1988,41 +1988,6 @@
             </Border>
           </Style>
         </Image>
-        <Textbox Name="Textbox27">
-          <CanGrow>true</CanGrow>
-          <KeepTogether>true</KeepTogether>
-          <Paragraphs>
-            <Paragraph>
-              <TextRuns>
-                <TextRun>
-                  <Value>Edición:</Value>
-                  <Style>
-                    <FontSize>8pt</FontSize>
-                    <FontWeight>Bold</FontWeight>
-                  </Style>
-                </TextRun>
-              </TextRuns>
-              <Style>
-                <TextAlign>Right</TextAlign>
-              </Style>
-            </Paragraph>
-          </Paragraphs>
-          <rd:DefaultName>Textbox26</rd:DefaultName>
-          <Top>1.71097cm</Top>
-          <Left>10.08867cm</Left>
-          <Height>0.6cm</Height>
-          <Width>3.25834cm</Width>
-          <ZIndex>1</ZIndex>
-          <Style>
-            <Border>
-              <Style>None</Style>
-            </Border>
-            <PaddingLeft>2pt</PaddingLeft>
-            <PaddingRight>2pt</PaddingRight>
-            <PaddingTop>2pt</PaddingTop>
-            <PaddingBottom>2pt</PaddingBottom>
-          </Style>
-        </Textbox>
         <Textbox Name="endDate">
           <CanGrow>true</CanGrow>
           <KeepTogether>true</KeepTogether>
@@ -2044,39 +2009,7 @@
           <Left>13.41757cm</Left>
           <Height>0.6cm</Height>
           <Width>2.5cm</Width>
-          <ZIndex>2</ZIndex>
-          <Style>
-            <Border>
-              <Style>None</Style>
-            </Border>
-            <PaddingLeft>2pt</PaddingLeft>
-            <PaddingRight>2pt</PaddingRight>
-            <PaddingTop>2pt</PaddingTop>
-            <PaddingBottom>2pt</PaddingBottom>
-          </Style>
-        </Textbox>
-        <Textbox Name="canvEdition">
-          <CanGrow>true</CanGrow>
-          <KeepTogether>true</KeepTogether>
-          <Paragraphs>
-            <Paragraph>
-              <TextRuns>
-                <TextRun>
-                  <Value>=Parameters!canvEdition.Value</Value>
-                  <Style>
-                    <FontSize>8pt</FontSize>
-                  </Style>
-                </TextRun>
-              </TextRuns>
-              <Style />
-            </Paragraph>
-          </Paragraphs>
-          <rd:DefaultName>canvEdition</rd:DefaultName>
-          <Top>1.71097cm</Top>
-          <Left>13.4361cm</Left>
-          <Height>0.6cm</Height>
-          <Width>2.5cm</Width>
-          <ZIndex>3</ZIndex>
+          <ZIndex>1</ZIndex>
           <Style>
             <Border>
               <Style>None</Style>
@@ -2111,7 +2044,7 @@
           <Left>18.94756cm</Left>
           <Height>0.6cm</Height>
           <Width>2.82295cm</Width>
-          <ZIndex>4</ZIndex>
+          <ZIndex>2</ZIndex>
           <Style>
             <Border>
               <Style>None</Style>
@@ -2145,7 +2078,7 @@
           <Left>21.89398cm</Left>
           <Height>0.6cm</Height>
           <Width>3.3569cm</Width>
-          <ZIndex>5</ZIndex>
+          <ZIndex>3</ZIndex>
           <Style>
             <Border>
               <Style>None</Style>
@@ -2181,7 +2114,7 @@
           <Left>9.77117cm</Left>
           <Height>0.81139cm</Height>
           <Width>6.16493cm</Width>
-          <ZIndex>6</ZIndex>
+          <ZIndex>4</ZIndex>
           <Style>
             <Border>
               <Style>None</Style>
@@ -2215,7 +2148,7 @@
           <Left>10.08867cm</Left>
           <Height>0.6cm</Height>
           <Width>2.5cm</Width>
-          <ZIndex>7</ZIndex>
+          <ZIndex>5</ZIndex>
           <Style>
             <Border>
               <Style>None</Style>
@@ -2245,7 +2178,7 @@
           <Left>12.6945cm</Left>
           <Height>0.6cm</Height>
           <Width>0.6878cm</Width>
-          <ZIndex>8</ZIndex>
+          <ZIndex>6</ZIndex>
           <Style>
             <Border>
               <Style>None</Style>
@@ -2381,10 +2314,14 @@
           <DataField>DiasCargos</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="Amount">
+          <DataField>Amount</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>UnitDS</rd:DataSetName>
-        <rd:SchemaPath>C:\Users\Mirla Del Rio\Documents\Visual Studio 2013\Projects\Weekly\Weekly\Reports\UnitDS.xsd</rd:SchemaPath>
+        <rd:SchemaPath>C:\Users\Yunior Laureano\Documents\Visual Studio 2013\Projects\Berry mirla\Berry\Berry\Reports\UnitDS.xsd</rd:SchemaPath>
         <rd:TableName>dtUnit</rd:TableName>
         <rd:TableAdapterFillMethod />
         <rd:TableAdapterGetDataMethod />
@@ -2398,10 +2335,6 @@
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
     <ReportParameter Name="endDate">
-      <DataType>String</DataType>
-      <Prompt>ReportParameter1</Prompt>
-    </ReportParameter>
-    <ReportParameter Name="canvEdition">
       <DataType>String</DataType>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>

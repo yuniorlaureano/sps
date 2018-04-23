@@ -10,7 +10,7 @@
 
 #pragma warning disable 1591
 
-namespace Berry.Reports {
+namespace Berry.Reports.Unit {
     
     
     /// <summary>
@@ -325,6 +325,8 @@ namespace Berry.Reports {
             
             private global::System.Data.DataColumn columnDiasCargos;
             
+            private global::System.Data.DataColumn columnAmount;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public dtUnitDataTable() {
@@ -544,6 +546,14 @@ namespace Berry.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn AmountColumn {
+                get {
+                    return this.columnAmount;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -602,7 +612,8 @@ namespace Berry.Reports {
                         string Cteren, 
                         string Devo, 
                         string DiasPot, 
-                        string DiasCargos) {
+                        string DiasCargos, 
+                        string Amount) {
                 dtUnitRow rowdtUnitRow = ((dtUnitRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         StaffID,
@@ -627,7 +638,8 @@ namespace Berry.Reports {
                         Cteren,
                         Devo,
                         DiasPot,
-                        DiasCargos};
+                        DiasCargos,
+                        Amount};
                 rowdtUnitRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowdtUnitRow);
                 return rowdtUnitRow;
@@ -673,6 +685,7 @@ namespace Berry.Reports {
                 this.columnDevo = base.Columns["Devo"];
                 this.columnDiasPot = base.Columns["DiasPot"];
                 this.columnDiasCargos = base.Columns["DiasCargos"];
+                this.columnAmount = base.Columns["Amount"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -724,6 +737,8 @@ namespace Berry.Reports {
                 base.Columns.Add(this.columnDiasPot);
                 this.columnDiasCargos = new global::System.Data.DataColumn("DiasCargos", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDiasCargos);
+                this.columnAmount = new global::System.Data.DataColumn("Amount", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAmount);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1234,6 +1249,22 @@ namespace Berry.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Amount {
+                get {
+                    try {
+                        return ((string)(this[this.tabledtUnit.AmountColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Amount\' in table \'dtUnit\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtUnit.AmountColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsStaffIDNull() {
                 return this.IsNull(this.tabledtUnit.StaffIDColumn);
             }
@@ -1506,6 +1537,18 @@ namespace Berry.Reports {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetDiasCargosNull() {
                 this[this.tabledtUnit.DiasCargosColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsAmountNull() {
+                return this.IsNull(this.tabledtUnit.AmountColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetAmountNull() {
+                this[this.tabledtUnit.AmountColumn] = global::System.Convert.DBNull;
             }
         }
         

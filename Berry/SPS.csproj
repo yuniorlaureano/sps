@@ -214,8 +214,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RegionalDS.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Reports\UnitDS.Designer.cs" />
-    <Compile Include="Reports\UnitDS1.Designer.cs">
+    <Compile Include="Reports\Unit\UnitDS.Designer.cs" />
+    <Compile Include="Reports\Unit\UnitDS1.Designer.cs" />
+    <Compile Include="Reports\Unit\UnitDS2.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>UnitDS.xsd</DependentUpon>
@@ -2058,19 +2059,20 @@
     <Content Include="Reports\RegionalDS.xss">
       <DependentUpon>RegionalDS.xsd</DependentUpon>
     </Content>
-    <Content Include="Reports\UnitDS.xsc">
-      <DependentUpon>UnitDS.xsd</DependentUpon>
-    </Content>
-    <None Include="Reports\UnitDS.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>UnitDS1.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <Content Include="Reports\UnitDS.xss">
-      <DependentUpon>UnitDS.xsd</DependentUpon>
-    </Content>
     <Content Include="Reports\VisitsDS.xsc">
       <DependentUpon>VisitsDS.xsd</DependentUpon>
+    </Content>
+    <Content Include="Reports\Unit\Unit.rdlc" />
+    <Content Include="Reports\Unit\UnitDS.xsc">
+      <DependentUpon>UnitDS.xsd</DependentUpon>
+    </Content>
+    <None Include="Reports\Unit\UnitDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>UnitDS2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Reports\Unit\UnitDS.xss">
+      <DependentUpon>UnitDS.xsd</DependentUpon>
     </Content>
     <None Include="Reports\VisitsDS.xsd">
       <Generator>MSDataSetGenerator</Generator>
@@ -2152,7 +2154,6 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Reports\Regional.rdlc" />
-    <EmbeddedResource Include="Reports\Unit.rdlc" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DbModel\DBModel\DBModel.csproj">
