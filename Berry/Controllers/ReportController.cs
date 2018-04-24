@@ -185,6 +185,9 @@ namespace Berry.Controllers
             return File(file, mime);
         }
 
-
+        public ViewResult ReporteDeVentas()
+        {
+            return View();
+        }
     }
 }

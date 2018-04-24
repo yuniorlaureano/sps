@@ -2128,6 +2128,7 @@
     <Content Include="Views\CanvWeek\Open.cshtml" />
     <Content Include="Views\CanvWeek\Close.cshtml" />
     <Content Include="Views\Report\Index.cshtml" />
+    <Content Include="Views\Report\ReporteDeVentas.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
