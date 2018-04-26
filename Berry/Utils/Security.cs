@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Berry.Models;
 
 namespace Berry.Utils
 {
     public class Security : System.Web.UI.MasterPage
     {
-
+        public static User CurrentUser { get; set; }
         public string GetWinUser()
         {
             string user = HttpContext.Current.User.Identity.Name;

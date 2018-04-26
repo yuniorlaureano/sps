@@ -397,6 +397,14 @@ namespace Berry.DBConsultor
             DataTable dt = oraCon.ExecuteStatementWithCursor("berry.GET_ACTIVE_CANV_CODE", args, true, true);
             return dt;
         }
+        public DataTable GetActiveBooks()
+        {
+            oraCon = new OracleDBConnection(oraConnName);
+            List<DbParameter> args = new List<DbParameter>();
+            args.Add(oraCon.getNewCursorParameter("resultdata"));
+            DataTable dt = oraCon.ExecuteStatementWithCursor("berry.GET_ACTIVE_BOOKS", args, true, true);
+            return dt;
+        }
 
         public DataTable GetActiveRepSales()
         {
@@ -429,7 +437,7 @@ namespace Berry.DBConsultor
         }
      
         #region Action
-        public DataTable InsertCommHistTrans(CommisionHistTrans transaction)
+        public DataTable InsertCommHistTrans(CommisionHistTrans transaction, int userId)
         {
             security = new Security();
 
@@ -452,13 +460,15 @@ namespace Berry.DBConsultor
             args.Add(oraCon.getNewParameter("ln_CTRL_LOSS", transaction.Ctrl_Loss));
             args.Add(oraCon.getNewParameter("ln_UNCTRL_LOSS", transaction.Unctrl_Loss));
             args.Add(oraCon.getNewParameter("ln_db", transaction.DB));
-            args.Add(oraCon.getNewParameter("ln_user", security.GetWinUser()));
+            args.Add(oraCon.getNewParameter("ln_user", userId));
+            args.Add(oraCon.getNewParameter("ln_BOOK_CODE", transaction.Book_Code));
+
             args.Add(oraCon.getNewCursorParameter("resultdata"));
             DataTable dt = oraCon.ExecuteStatementWithCursor("berry.INSERT_TRANSACTION", args, true, true);
             return dt;
         }
 
-        public string UpdateCommHistTrans(CommisionHistTrans transaction)
+        public string UpdateCommHistTrans(CommisionHistTrans transaction, int userId)
         {
             security = new Security();
             string comment = string.Empty;
@@ -484,7 +494,7 @@ namespace Berry.DBConsultor
             args.Add(oraCon.getNewParameter("ln_UNCTRL_LOSS", transaction.Unctrl_Loss));
             args.Add(oraCon.getNewParameter("lc_key", transaction.Key));
             args.Add(oraCon.getNewParameter("ln_db", transaction.DB));
-            args.Add(oraCon.getNewParameter("ln_user", security.GetWinUser()));
+            args.Add(oraCon.getNewParameter("ln_user", userId));
             args.Add(oraCon.getNewCursorParameter("resultdata"));
             DataTable dt = oraCon.ExecuteStatementWithCursor("berry.UPDATE_COMM_TRANSACTION", args, true, true);
 

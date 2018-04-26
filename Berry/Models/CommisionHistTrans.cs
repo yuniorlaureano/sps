@@ -17,6 +17,10 @@ namespace Berry.Models
         public string Prod_Grp_Code { get; set; }
         [DataMember]
         public string Canv_Code { get; set; }
+
+        [DataMember]
+        public string Book_Code { get; set; }
+
         [DataMember]
         public string Canv_Edition { get; set; }
         [DataMember]
