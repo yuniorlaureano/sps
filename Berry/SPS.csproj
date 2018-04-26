@@ -260,6 +260,19 @@
     <Content Include="Content\js\fontawesome-all.min.js" />
     <Content Include="Content\loading.css" />
     <Content Include="Content\paper.css" />
+    <Content Include="Content\svg-with-js\css\fa-svg-with-js.css" />
+    <Content Include="Content\svg-with-js\js\fa-brands.js" />
+    <Content Include="Content\svg-with-js\js\fa-brands.min.js" />
+    <Content Include="Content\svg-with-js\js\fa-regular.js" />
+    <Content Include="Content\svg-with-js\js\fa-regular.min.js" />
+    <Content Include="Content\svg-with-js\js\fa-solid.js" />
+    <Content Include="Content\svg-with-js\js\fa-solid.min.js" />
+    <Content Include="Content\svg-with-js\js\fa-v4-shims.js" />
+    <Content Include="Content\svg-with-js\js\fa-v4-shims.min.js" />
+    <Content Include="Content\svg-with-js\js\fontawesome-all.js" />
+    <Content Include="Content\svg-with-js\js\fontawesome-all.min.js" />
+    <Content Include="Content\svg-with-js\js\fontawesome.js" />
+    <Content Include="Content\svg-with-js\js\fontawesome.min.js" />
     <Content Include="Content\Util.css" />
     <Content Include="Content\web-fonts-with-css\css\fa-brands.css" />
     <Content Include="Content\web-fonts-with-css\css\fa-brands.min.css" />
@@ -453,6 +466,7 @@
     <Content Include="js\payPeriod.js" />
     <Content Include="js\regionReport.js" />
     <Content Include="js\report.js" />
+    <Content Include="js\reporte-venta.js" />
     <Content Include="js\Underscore.js" />
     <Content Include="js\unitReport.js" />
     <Content Include="js\Utils.js" />

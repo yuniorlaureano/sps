@@ -266,5 +266,19 @@ namespace Berry.Controllers
             return File(file, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "reporte-general-"+ userId +".xlsx");
         }
 
+        public JsonResult GetGeneratedEditions()
+        {
+            db = new BerryDB();
+            DataTable log = db.GetGeneratedEditions();
+            return Json(JsonConvert.SerializeObject(log), JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GetGeneratedWeekByEdition(int edition)
+        {
+            db = new BerryDB();
+            DataTable log = db.GetGeneratedWeekByEdition(edition);
+            return Json(JsonConvert.SerializeObject(log), JsonRequestBehavior.AllowGet);
+        }
+
     }
 }

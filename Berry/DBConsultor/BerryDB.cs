@@ -1115,6 +1115,69 @@ namespace Berry.DBConsultor
 
             return dt;
         }
+
+        public DataTable GetGeneratedEditions()
+        {
+            oraCon = new OracleDBConnection(oraConnName);
+            List<DbParameter> args = new List<DbParameter>();
+            args.Add(oraCon.getNewCursorParameter("RESULTSET"));
+            DataTable dt = oraCon.ExecuteStatementWithCursor("berry.AUTCMP_GNT_EDITION", args, true, true);
+
+            return dt;
+        }
+
+        public DataTable GetGeneratedWeekByEdition(int edition)
+        {
+            oraCon = new OracleDBConnection(oraConnName);
+            List<DbParameter> args = new List<DbParameter>();
+            args.Add(oraCon.getNewParameter("EDITIION", edition));
+            args.Add(oraCon.getNewCursorParameter("RESULTSET"));
+            DataTable dt = oraCon.ExecuteStatementWithCursor("berry.AUTCMP_GNT_WEEK_BY_EDITION", args, true, true);
+
+            return dt;
+        }
+
+        public DataTable GetSalesReportData(string role, int employeeId, string startDate, string endDate)
+        {
+            oraCon = new OracleDBConnection(oraConnName);
+            List<DbParameter> args = new List<DbParameter>();
+            args.Add(oraCon.getNewParameter("in_rol", role));
+            args.Add(oraCon.getNewParameter("in_employee", employeeId));
+            args.Add(oraCon.getNewParameter("IN_START_DATE", startDate));
+            args.Add(oraCon.getNewParameter("IN_END_DATE", endDate));
+            args.Add(oraCon.getNewCursorParameter("RESULTSET"));
+            DataTable dt = oraCon.ExecuteStatementWithCursor("berry.GET_SALES_REPORT_DATA", args, true, true);
+
+            return dt;
+        }
+
+        public DataTable GetSalesReportSubscriberData(int employeeId, string startDate, string endDate)
+        {
+            oraCon = new OracleDBConnection(oraConnName);
+            List<DbParameter> args = new List<DbParameter>();
+            args.Add(oraCon.getNewParameter("in_employee", employeeId));
+            args.Add(oraCon.getNewParameter("IN_START_DATE", startDate));
+            args.Add(oraCon.getNewParameter("IN_END_DATE", endDate));
+            args.Add(oraCon.getNewCursorParameter("RESULTSET"));
+            DataTable dt = oraCon.ExecuteStatementWithCursor("berry.GET_SALES_REPORT_SUBSCR_DATA", args, true, true);
+
+            return dt;
+        }
+
+        public DataTable GetFinalSalesReportData(string reportType,string role, int employeeId, string startDate, string endDate)
+        {
+            oraCon = new OracleDBConnection(oraConnName);
+            List<DbParameter> args = new List<DbParameter>();
+            args.Add(oraCon.getNewParameter("rep_type", reportType));
+            args.Add(oraCon.getNewParameter("in_rol", role));
+            args.Add(oraCon.getNewParameter("in_employee", employeeId));
+            args.Add(oraCon.getNewParameter("IN_START_DATE", startDate));
+            args.Add(oraCon.getNewParameter("IN_END_DATE", endDate));
+            args.Add(oraCon.getNewCursorParameter("RESULTSET"));
+            DataTable dt = oraCon.ExecuteStatementWithCursor("berry.GET_FN_SALES_REPORT_DATA", args, true, true);
+
+            return dt;
+        }
     }
 
 }
