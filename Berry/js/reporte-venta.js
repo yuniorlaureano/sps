@@ -131,12 +131,48 @@
         var splitDates = $('#canvweek').val().split(" - ");
         var edition = $('#canvedition').val();
         var url = $(this).data("url");
-        debugger;
+        var downloadUrl = $(this).data("url-download");
+        var file = "";
+        var fullFile = "";
+        var fileName = "";
+        
         downloadSalesReports(url, "PDF", edition, splitDates[0], splitDates[1], splitDates[2], function (resultset) {
 
-            //addSubscrDetailsRow(table, resultset);
-            //$("#sales-subscr-details-modal").modal({ show: 'true' });
-            console.log(resultset);
+            for (var i = 0; i < resultset.length; i++) {
+
+                fullFile = resultset[i].FullPath + resultset[i].FileName + resultset[i].Format;
+                fileName = resultset[i].FileName + resultset[i].Format;
+
+                file = downloadUrl + "?fullFile=" + fullFile + "&mime=" + resultset[i].Mime + "&fileName=" + fileName;
+                window.open(file, "_blank");
+            }
+
+            hideColorLoading();
+        });
+    });
+
+    $("#generate-excel-report").on("click", function () {
+
+        showColorLoading();
+        var splitDates = $('#canvweek').val().split(" - ");
+        var edition = $('#canvedition').val();
+        var url = $(this).data("url");
+        var downloadUrl = $(this).data("url-download");
+        var file = "";
+        var fullFile = "";
+        var fileName = "";
+
+        downloadSalesReports(url, "EXCEL", edition, splitDates[0], splitDates[1], splitDates[2], function (resultset) {
+            
+            for (var i = 0; i < resultset.length; i++) {
+              
+                fullFile = resultset[i].FullPath + resultset[i].FileName + resultset[i].Format;
+                fileName = resultset[i].FileName + resultset[i].Format;
+
+                file = downloadUrl + "?fullFile=" + fullFile + "&mime=" + resultset[i].Mime + "&fileName=" + fileName;
+                window.open(file, "_blank");
+            }
+            
             hideColorLoading();
         });
     });

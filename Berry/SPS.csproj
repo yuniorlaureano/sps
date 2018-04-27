@@ -162,6 +162,7 @@
     <Compile Include="Models\BillingReport.cs" />
     <Compile Include="Models\Audit.cs" />
     <Compile Include="Models\CommisionHistTrans.cs" />
+    <Compile Include="Models\FileResultViewModel.cs" />
     <Compile Include="Models\PayPeriodReport.cs" />
     <Compile Include="Models\RegionalReport.cs" />
     <Compile Include="Models\UnitReport.cs" />

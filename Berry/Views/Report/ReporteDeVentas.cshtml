@@ -43,8 +43,8 @@
                                 </div>
                             </form>
                             <div class="panel-footer text-left">
-                                <button type="button" id="generate-pdf-report" class="btn btn-primary btn-labeled far fa-file-pdf" data-url="@Url.Action("GetPayPeriodData", "Report")">PDF</button>
-                                <button type="button" id="generate-excel-report" class="btn btn-primary btn-labeled far fa-file-excel">EXCEL</button>
+                                <button type="button" id="generate-pdf-report" class="btn btn-primary btn-labeled far fa-file-pdf" data-url="@Url.Action("GetPayPeriodData", "Report")" data-url-download="@Url.Action("DownloadFile", "Report")">PDF</button>
+                                <button type="button" id="generate-excel-report" class="btn btn-primary btn-labeled far fa-file-excel" data-url="@Url.Action("GetPayPeriodData", "Report")" data-url-download="@Url.Action("DownloadFile", "Report")">EXCEL</button>
                             </div>
                             <!--===================================================-->
                             <!--End Block Styled Form -->

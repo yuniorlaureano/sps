@@ -227,8 +227,20 @@ namespace Berry.Controllers
                 new ReportParameter("endDate", endDate)
             };
 
+            string format = string.Empty;
+            List<FileResultViewModel> fileResult = null;
+
+            switch(reportType)
+            {
+                case "EXCEL": format = ".xls";
+                    break;
+                case "PDF": format = ".pdf";
+                    break;
+            }
+
             db = new BerryDB();
             User user = ((User)(Session["user"]));
+
             string roles = string.Join(",", user.Roles);
             string savingPath = Server.MapPath("~/Content/Files/");
             string rdlcPath = Server.MapPath("~/Reports/");
@@ -237,13 +249,26 @@ namespace Berry.Controllers
             DataTable payPeriodGeneral = db.GetFinalSalesReportData("SUMMARY", roles.ToLower(), user.UserId, startDate, endDate);
             DataTable payPeriodDetails = db.GetFinalSalesReportData("SUMMARY_FUCK", roles.ToLower(), user.UserId, startDate, endDate);
 
-            List<string> reports = new List<string>
+            ReportHelper(prm, "PayPeriodDS", rdlcPath + "PayPeriod.rdlc", "PayPeriodDS", false, reportType, payPeriodGeneral, savingPath + "payperiod-" + user.UserId + format);
+            ReportHelper(prm, "PayPeriodDetailDS", rdlcPath + "PayPeriodDetail.rdlc", "PayPeriodDetailDS", false, reportType, payPeriodDetails, savingPath + "payperiod-details-" + user.UserId + format);
+
+            fileResult = new List<FileResultViewModel>
             {
-                ReportHelper(prm, "PayPeriodDS", rdlcPath + "PayPeriod.rdlc", "PayPeriodDS", false, reportType, payPeriodGeneral, savingPath + "payperiod-" +user.UserId + ".pdf"),
-                ReportHelper(prm, "PayPeriodDetailDS", rdlcPath + "PayPeriodDetail.rdlc", "PayPeriodDetailDS", false, reportType, payPeriodDetails, savingPath + "payperiod-details-" +user.UserId + ".pdf")
+                new FileResultViewModel
+                {
+                    FileName = "payperiod-" + user.UserId,
+                    Format = format,
+                    FullPath = "~/Content/Files/",
+                },
+                new FileResultViewModel
+                {
+                    FileName = "payperiod-details-" + user.UserId,
+                    Format = format,
+                    FullPath = "~/Content/Files/",
+                }
             };
 
-            return Json(reports, JsonRequestBehavior.AllowGet);
+            return Json(fileResult, JsonRequestBehavior.AllowGet);
         }
 
         [HttpGet]
@@ -289,6 +314,11 @@ namespace Berry.Controllers
             }
 
             return savingPath;
+        }
+
+        public FileResult DownloadFile(string fullFile, string mime, string fileName)
+        {
+            return File(Server.MapPath(fullFile), mime, fileName);
         }
     }
 }
