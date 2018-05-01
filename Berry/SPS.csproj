@@ -25,6 +25,7 @@
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
     <UseGlobalApplicationHostFile />
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -50,7 +51,10 @@
     <Reference Include="AutoMapper.Net4">
       <HintPath>..\packages\AutoMapper.3.3.1\lib\net40\AutoMapper.Net4.dll</HintPath>
     </Reference>
-    <Reference Include="DocumentFormat.OpenXml, Version=2.5.5631.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="DocumentFormat.OpenXml, Version=2.5.5631.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Report.Viewer.10.0.0.0\lib\net\Microsoft.ReportViewer.Common.dll</HintPath>
@@ -162,6 +166,7 @@
     <Compile Include="Models\BillingReport.cs" />
     <Compile Include="Models\Audit.cs" />
     <Compile Include="Models\CommisionHistTrans.cs" />
+    <Compile Include="Models\FileResultViewModel.cs" />
     <Compile Include="Models\PayPeriodReport.cs" />
     <Compile Include="Models\RegionalReport.cs" />
     <Compile Include="Models\UnitReport.cs" />
@@ -260,6 +265,19 @@
     <Content Include="Content\js\fontawesome-all.min.js" />
     <Content Include="Content\loading.css" />
     <Content Include="Content\paper.css" />
+    <Content Include="Content\svg-with-js\css\fa-svg-with-js.css" />
+    <Content Include="Content\svg-with-js\js\fa-brands.js" />
+    <Content Include="Content\svg-with-js\js\fa-brands.min.js" />
+    <Content Include="Content\svg-with-js\js\fa-regular.js" />
+    <Content Include="Content\svg-with-js\js\fa-regular.min.js" />
+    <Content Include="Content\svg-with-js\js\fa-solid.js" />
+    <Content Include="Content\svg-with-js\js\fa-solid.min.js" />
+    <Content Include="Content\svg-with-js\js\fa-v4-shims.js" />
+    <Content Include="Content\svg-with-js\js\fa-v4-shims.min.js" />
+    <Content Include="Content\svg-with-js\js\fontawesome-all.js" />
+    <Content Include="Content\svg-with-js\js\fontawesome-all.min.js" />
+    <Content Include="Content\svg-with-js\js\fontawesome.js" />
+    <Content Include="Content\svg-with-js\js\fontawesome.min.js" />
     <Content Include="Content\Util.css" />
     <Content Include="Content\web-fonts-with-css\css\fa-brands.css" />
     <Content Include="Content\web-fonts-with-css\css\fa-brands.min.css" />
@@ -453,9 +471,11 @@
     <Content Include="js\payPeriod.js" />
     <Content Include="js\regionReport.js" />
     <Content Include="js\report.js" />
+    <Content Include="js\reporte-venta.js" />
     <Content Include="js\Underscore.js" />
     <Content Include="js\unitReport.js" />
     <Content Include="js\Utils.js" />
+    <Content Include="Lib\DocumentFormat.OpenXml.dll" />
     <Content Include="Microsoft.ReportViewer.ProcessingObjectModel.DLL" />
     <Content Include="plugins\animate-css\animate.css" />
     <Content Include="plugins\animate-css\animate.min.css" />
@@ -2128,6 +2148,7 @@
     <Content Include="Views\CanvWeek\Open.cshtml" />
     <Content Include="Views\CanvWeek\Close.cshtml" />
     <Content Include="Views\Report\Index.cshtml" />
+    <Content Include="Views\Report\ReporteDeVentas.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

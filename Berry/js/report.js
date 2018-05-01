@@ -142,6 +142,7 @@ $(document).ready(function () {
             alertNoty("Debe proveer las fechas", "Info", "danger");
         }
     });
+
 });
 
 function clearDates() {
