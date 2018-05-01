@@ -1,0 +1,203 @@
+﻿
+@{
+    ViewBag.Title = "ReporteDeVentas";
+    <link href="@Url.Content("~/plugins/bootstrap-datepicker/bootstrap-datepicker.css")" rel="stylesheet" />
+}
+
+<section class="featured">
+
+    <div class="boxed">
+
+        <!--CONTENT CONTAINER-->
+        <!--===================================================-->
+        <div id="content-container">
+
+            <div id="page-content">
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="panel">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Formulario de reportes</h3>
+                            </div>
+                            <!--Block Styled Form -->
+                            <!--===================================================-->
+                            <form data-url="@Url.Action("GetGenaratedWeekByDb", "BerryGenerator")" id="form-berry-generator">
+                                <div class="panel-body">
+                                    <div class="col-sm-12">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label class="control-label">Ediciones</label>
+                                                    <select class="selectpicker form-control" id="canvedition" data-show-subtext="true" data-url="@Url.Action("GetGeneratedEditions", "BerryGenerator")"></select>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label class="control-label">Semanas</label>
+                                                    <select class="selectpicker form-control" id="canvweek" data-show-subtext="true" data-url-details="@Url.Action("GetSalesReportSubscriberData", "Report")" data-url="@Url.Action("GetGeneratedWeekByEdition", "BerryGenerator")" data-url-gn-report="@Url.Action("GetSalesReportData", "Report")"></select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                            <div class="panel-footer text-left">
+                                <button type="button" id="generate-pdf-report" class="btn btn-primary btn-labeled far fa-file-pdf" data-url="@Url.Action("GetPayPeriodData", "Report")" data-url-download="@Url.Action("DownloadFile", "Report")">PDF</button>
+                                <button type="button" id="generate-excel-report" class="btn btn-primary btn-labeled far fa-file-excel" data-url="@Url.Action("GetPayPeriodData", "Report")" data-url-download="@Url.Action("DownloadFile", "Report")">EXCEL</button>
+                            </div>
+                            <!--===================================================-->
+                            <!--End Block Styled Form -->
+                        </div>
+                    </div>
+                </div>
+                <div class="row" id="panel-canv-wee-details">
+                    <div class="col-sm-12">
+                        <!--Panel with Tabs-->
+                        <!--===================================================-->
+                        <div class="panel">
+
+                            <!--Panel heading-->
+                            <!--Panel body-->
+                            <div class="panel-body">
+                                <!--Tabs content-->
+                                <div class="tab-content">
+                                    <div id="demo-tabs-box-1" class="tab-pane fade in active">
+                                        <div class="panel-body" data-url="@Url.Action("GetOpenedGnWeekDetailsByDate", "BerryGenerator")" id="panel-body-canv-wee-details">
+                                            <div class="row">
+                                                <div class="table-responsive">
+                                                    <table id="tbPivotReport" data-url="@Url.Action("GetPivotReport", "SalesReport")" class="display table table-hover table-vcenter text-center tablefilter" style="margin-top:20px" cellspacing="0" width="100%">
+                                                        <thead>
+                                                            <tr>
+                                                                <th colspan="3" class="thType"></th>
+                                                                <th colspan="3" class="thType thColor text-center" style="border:solid 1px white;">Digital</th>
+                                                                <th colspan="3" class="thType thColor text-center" style="border:solid 1px white;">Print</th>
+                                                                <th colspan="3" class="thType thColor text-center" style="border:solid 1px white;">Total</th>
+                                                            </tr>
+                                                            <tr>
+                                                                <th class="thColor">Supervisor</th>
+                                                                <th class="thColor">Rep ID</th>
+                                                                <th class="thColor">Representante</th>
+                                                                <th class="thColor text-center" style="border-left:solid 1px white;">Prod CO</th>
+                                                                <th class="thColor text-center">New</th>
+                                                                <th class="thColor text-center" style="border-right:solid 1px white;">Prod CI</th>
+                                                                <th class="thColor text-center">Prod CO</th>
+                                                                <th class="thColor text-center">New</th>
+                                                                <th class="thColor" style="border-right:solid 1px white;">Prod CI</th>
+                                                                <th class="thColor text-center">Prod CO</th>
+                                                                <th class="thColor text-center">New</th>
+                                                                <th class="thColor text-center">Prod CI</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tfoot>
+                                                            <tr style="background-color: #ffb3b3;">
+                                                                <th>Total:</th>
+                                                                <th></th>
+                                                                <th></th>
+                                                                <th class="text-center" id="dig-prod-co"></th>
+                                                                <th class="text-center" id="dig-prod-new"></th>
+                                                                <th class="text-center" id="dig-prod-ci"></th>
+                                                                <th class="text-center" id="print-prod-co"></th>
+                                                                <th class="text-center" id="print-prod-new"></th>
+                                                                <th class="text-center" id="print-prod-ci"></th>
+                                                                <th class="text-center" id="total-prod-co"></th>
+                                                                <th class="text-center" id="total-prod-new"></th>
+                                                                <th class="text-center" id="total-prod-ci"></th>
+                                                            </tr>
+                                                        </tfoot>
+                                                    </table>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--===================================================-->
+                        <!--End of panel with tabs-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--Bootstrap Modal without Animation-->
+<!--===================================================-->
+<div class="modal" id="sales-subscr-details-modal" role="dialog" tabindex="-1" aria-labelledby="sales-subscr-details-modal" aria-hidden="true">
+    <div class="modal-dialog" style="width: 95%;">
+        <div class="modal-content">
+
+            <!--Modal header-->
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><i class="pci-cross pci-circle"></i></button>
+                <h4 class="modal-title">Modal Heading</h4>
+            </div>
+
+
+            <!--Modal body-->
+            <div class="modal-body">
+                <div class="table-responsive">
+                    <table id="sales-report-subscr-details" class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Subscr ID</th>
+                                <th>Name</th>
+                                <th>Canv Week</th>
+                                <th>Canv</th>
+                                <th>Edition</th>
+                                <th>Prod Code</th>
+                                <th>Prod CO</th>
+                                <th>Prod CI</th>
+                                <th>Renew CI</th>
+                                <th>Decrease CI</th>
+                                <th>New</th>
+                                <th>Ctrl Loss</th>
+                                <th>Unctrl Loss</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+            <!--Modal footer-->
+            <div class="modal-footer">
+                <button data-dismiss="modal" class="btn btn-default" type="button">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--===================================================-->
+<!--End Bootstrap Modal without Animation-->
+
+@section scripts{
+
+    @*<script src="@Url.Content("~/js/datepicker/daterangepicker.js")"></script>*@
+    <script src="@Url.Content("~/plugins/bootbox/bootbox.min.js")"></script>
+    <script src="@Url.Content("~/js/demo/ui-modals.js")"></script>
+    <script src="@Url.Content("~/js/demo/ui-alerts.js")"></script>
+    <script src="@Url.Content("~/plugins/datatables/media/js/jquery.dataTables.js")"></script>
+    <script src="@Url.Content("~/plugins/datatables/media/js/dataTables.bootstrap.js")"></script>
+    <script src="@Url.Content("~/plugins/bootstrap-select/bootstrap-select.min.js")"></script>
+    <script src="@Url.Content("~/js/Utils.js")"></script>
+    <script src="@Url.Content("~/js/reporte-venta.js")"></script><!--"~/js/berryGenerator.js"-->
+}
