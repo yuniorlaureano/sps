@@ -1,4 +1,4 @@
-﻿var tbHistDetail, canvass, repSalesList, prodGrpList, weekList;
+﻿var tbHistDetail, canvass, repSalesList, prodGrpList, weekList, books;
 
 $(document).ready(function () {
     getCanvass();
@@ -10,6 +10,7 @@ $(document).ready(function () {
         getRepSales();
         getProdGrp();
         getActiveCanvWeek();
+        getBooks();
     });
 
     $("input.chkDB").change(function () {
@@ -57,6 +58,7 @@ function getHistTable(report) {
         tbHistDetail.row.add([
             '<a href="#" id="rep' + rowNum + '" data-type="select" data-placement="right" class="repEditable" data-title="Seleccione el Representante">' + d.REPRESENTATIVE + '</a>',
             '<a href="#" id="grpProd' + rowNum + '" data-type="select" data-placement="right" class="prodGrpEditable" data-title="Seleccione el Group Code">' + d.PROD_GRP_CODE + '</a>',
+            '<a href="#" id="bookCode' + rowNum + '" data-type="select" data-placement="right" class="bookCodeEditable" data-title="Introduzca BookCode">' + d.BOOK_CODE + '</a>',
             '<a href="#" id="week' + rowNum + '" data-type="select" data-placement="right" class="activeWeek" data-title="Seleccione la Semana">' + d.CANV_WEEK + '</a>',
              '<a href="#" id="assig' + rowNum + '" data-type="number" data-placement="right" class="editable" data-title="Seleccione la asignación">' + d.ASSIGNMENT_NO + '</a>',
              '<a href="#" id="prodCo' + rowNum + '" data-type="number" data-placement="right" class="editable" data-title="Introduzca el Prod CO">' + d.PROD_CO + '</a>',
@@ -69,8 +71,8 @@ function getHistTable(report) {
              '<a href="#" id="op' + rowNum + '" data-type="number" data-placement="right" class="editable" data-title="Introduzca el OP CI">' + d.OP_CI + '</a>',
              '<a href="#" id="np' + rowNum + '" data-type="number" data-placement="right" class="editable" data-title="Introduzca el NP CI">' + d.NP_CI + '</a>',
               '<a href="#" id="otc' + rowNum + '" data-type="number" data-placement="right" class="editable" data-title="Introduzca el OTC CI">' + d.OTC_CI + '</a>',
-             '<div class="btn-group"><button name="btnEdit" data-id="' + rowNum + '" data-key="' + d.KEY + '"  class="btn btn-default btn-sm btn-icon icon-lg fa fa-pencil" style="color:#5fa2dd !important"></button>' +
-             '<button name="btnDelete" data-id="' + rowNum + '"  data-key="' + d.KEY + '" class="btn btn-default btn-sm btn-icon icon-lg fa fa-trash text-danger" style="color:#f76c51 !important"></button></div>'
+             '<div ><button name="btnEdit" data-id="' + rowNum + '" data-key="' + d.KEY + '"  class="btn btn-sm btn-success" >Guardar</button>' +
+             '<button name="btnDelete" data-id="' + rowNum + '"  data-key="' + d.KEY + '" class="btn btn-sm btn-danger" >Delete</button></div>'
         ]).draw().nodes().to$().addClass(d.STATUS);
 
         rowNum++;
@@ -80,6 +82,7 @@ function getHistTable(report) {
     
     getRepresentativeEditable();
     getProdGrpEditable();
+    getBooksEditable();
     getActiveWeekEditable();
     disableRows();
 
@@ -162,6 +165,28 @@ function getRepSales() {
     });
 }
 
+
+function getBooks() {
+
+    $.get($('#ddlBooks').data("url"), function (bookList) {
+
+        $('#ddlBooks')
+        .find('option')
+        .remove()
+        .end();
+
+        books = bookList;
+
+        $(books).each(function (index, value) {
+            var $option = $("<option/>").attr("value", value.BOOK_CODE).text(value.BOOK_CODE);
+            $('#ddlBooks').append($option);
+        });
+
+        $('#ddlBooks')
+              .selectpicker('refresh');
+
+    });
+}
 function getProdGrp() {
 
     $.get($('#ddlProduct').data("url"), function (product) {
@@ -215,6 +240,7 @@ function insertTransaction() {
     var CommisionHistTrans = {
         "Subscr_ID": $('#txtCustID').val(), "Prod_Grp_Code": $('#ddlProduct').val(),
         "Canv_Code": $('#ddlCanvCode').val(), "Canv_Edition": $('#ddlEdition').val(),
+        "Book_Code": $('#ddlBooks').val(), "Book_Code": $('#ddlBooks').val(),
         "Canv_Week": $('#ddlActiveWeek').val(), "Employee_id": $('#ddlRepSales').val(),
         "Prod_Co": $('#txtProdCo').val(), "Prod_Ci": $('#txtProdCi').val(),
         "Renew_Ci": $('#txtRenewCi').val(), "Increase_Ci": $('#txtIncrease').val(),
@@ -248,6 +274,7 @@ function updateTransaction(rowID, key) {
     var CommisionHistTrans = {
         "Subscr_ID": $('#txtCustID').val(), "Prod_Grp_Code": $("#grpProd" + rowID).text(),
         "Canv_Code": $('#ddlCanvCode').val(), "Canv_Edition": $('#ddlEdition').val(),
+        "Book_Code": $('#bookCode').val(), "Book_Code": $('#bookCode').val(),
         "Assigment_No": $("#assig" + rowID).text(), "Canv_Week": $("#week" + rowID).text(),
         "Employee_Name": $("#rep" + rowID).text(), "Prod_Co": $("#prodCo" + rowID).text(),
         "Prod_Ci": $("#prodCi" + rowID).text(), "Renew_Ci": $("#renewCi" + rowID).text(),
@@ -320,6 +347,18 @@ function getProdGrpEditable() {
     })
 
     $('.prodGrpEditable').editable({
+        source: list
+    });
+}
+
+function getBooksEditable() {
+
+    var list = [];
+    $(books).each(function (i, v) {
+        list.push({ value: v.BOOK_CODE, text: v.BOOK_CODE });
+    })
+
+    $('.bookCodeEditable').editable({
         source: list
     });
 }

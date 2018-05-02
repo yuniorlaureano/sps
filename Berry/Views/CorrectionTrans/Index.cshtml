@@ -42,7 +42,10 @@
                         <div class="panel panel-bordered" id="histDetailPanel">
                             <div class="panel-heading">
                                 <div class="panel-control">
-                                    <a href="#fakelink" class="add-tooltip fa fa-question-circle fa-lg unselectable" data-html="true" data-title="<h4>Información</h4><p style='width:150px'>Agrega, modifica y/o elimina transacciones de la tabla comisiones.</p><p style='width:150px'>Para modificar una transacción, debes dar click a los campos que deseas modificar, ingresar los nuevos valores y luego dar click al botón editar en la fila que deseas modificar.</p>" data-original-title="" title=""></a>
+                                    <a href="#fakelink" class="add-tooltip fa fa-question-circle fa-lg unselectable" data-html="true" data-title="<h4>Información</h4><p style='width:150px'>Agrega, modifica y/o elimina transacciones de la tabla comisiones.</p><p style='width:150px'>Para modificar una transacción, debes dar click a los campos que deseas modificar, ingresar los nuevos valores y luego dar click al botón editar en la fila que deseas modificar.</p>" data-original-title="" title="">
+                                        <i class="fas fa-plus"></i>
+
+                                    </a>
                                 </div>
                                 <h3 class="panel-title">Transacciones</h3>
                             </div>
@@ -55,7 +58,7 @@
                                     <div class="panel-body">
                                         <div class="row">
                                             <div class="col-sm-6 table-toolbar-left">
-                                                <button data-target="#newTrans" data-toggle="modal" class="btn btn-purple btn-labeled fa fa-plus">Nueva</button>
+                                                <button data-target="#newTrans" data-toggle="modal" class="btn btn-sm btn-purple">Nueva</button>
                                             </div>
                                         </div>
                                         <table id="tbHistDetail" data-url="@Url.Action("GetHistDetail", "CorrectionTrans")" data-urledit="@Url.Action("UpdateCommHistTrans", "CorrectionTrans")" data-urldelete="@Url.Action("DeleteCommHistTrans", "CorrectionTrans")" class="display table table-hover table-vcenter" cellspacing="0" width="100%">
@@ -63,6 +66,7 @@
                                                 <tr>
                                                     <th>Ejecutivo</th>
                                                     <th>Grp Code</th>
+                                                    <th>Book Code</th>
                                                     <th>Canv Week</th>
                                                     <th>Asign No.</th>
                                                     @*<th>Employee ID</th>*@
@@ -139,4 +143,5 @@
             });
         </script>*@
 }
+
 

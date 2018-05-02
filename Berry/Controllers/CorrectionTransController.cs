@@ -15,7 +15,12 @@ namespace Berry.Controllers
     [CustomAuthorize(Roles.Administrator)]
     public class CorrectionTransController : Controller
     {
-        BerryDB db;
+        BerryDB db;        
+
+        public CorrectionTransController()
+        {
+
+        }
         //
         // GET: /CorrectionTrans/
 
@@ -69,8 +74,25 @@ namespace Berry.Controllers
             {
                 throw;
             }
-
         }
+
+
+        public ContentResult GetActiveBooks()
+        {
+            this.db = new BerryDB();
+
+            try
+            {
+                DataTable histDetail = this.db.GetActiveBooks();
+                return Content(JsonConvert.SerializeObject(histDetail), "json/application");
+
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
+        }
+
         public ContentResult GetActiveRepSales()
         {
             this.db = new BerryDB();
@@ -129,7 +151,8 @@ namespace Berry.Controllers
 
             try
             {
-                DataTable result = this.db.InsertCommHistTrans(transaction);
+                
+                DataTable result = this.db.InsertCommHistTrans(transaction, Security.CurrentUser.UserId);
                 return Content(JsonConvert.SerializeObject(result), "json/application");
 
             }
@@ -145,7 +168,7 @@ namespace Berry.Controllers
 
             try
             {
-                string result = this.db.UpdateCommHistTrans(transaction);
+                string result = this.db.UpdateCommHistTrans(transaction, Security.CurrentUser.UserId);
                 return Content(JsonConvert.SerializeObject(result), "json/application");
 
             }

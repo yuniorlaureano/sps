@@ -62,6 +62,12 @@
                                                 </div>
                                             </div>
                                             <div class="form-group">
+                                                <label class="col-lg-3 control-label">Book Code</label>
+                                                <div class="col-lg-7">
+                                                    <select class="selectpicker" id="ddlBooks" data-url="@Url.Action("GetActiveBooks", "CorrectionTrans")" data-live-search="true" data-width="100%"></select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
                                                 <label class="col-lg-3 control-label">Ejecutivo</label>
                                                 <div class="col-lg-7">
                                                     <select class="selectpicker" id="ddlRepSales" data-url="@Url.Action("GetActiveRepSales", "CorrectionTrans")" data-live-search="true" data-width="100%"></select>
@@ -155,7 +161,7 @@
                                 <div class="box-inline">
                                     <button type="button" class="previous btn btn-primary">Previous</button>
                                     <button type="button" class="next btn btn-primary">Next</button>
-                                    <button type="button" id="btnAdd" data-url="@Url.Action("InsertCommHistTrans", "CorrectionTrans")" class="finish btn btn-mint btn-lg btn-labeled fa fa-check-square">Crear</button>
+                                    <button type="button" id="btnAdd" data-url="@Url.Action("InsertCommHistTrans", "CorrectionTrans")" class="finish btn btn-sm btn-mint ">Crear</button>
                                 </div>
                             </div>
                         </form>
