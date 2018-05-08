@@ -85,12 +85,12 @@ namespace Berry.Controllers
             viewer.ReportPath = Server.MapPath("~/Reports/Rdl/finace.rdlc");
             ReportDataSource source = new ReportDataSource("finance", tbl);
             source.Name = "finance";
-            viewer.EnableExternalImages = true;
+            //viewer.EnableExternalImages = true;
             viewer.SetParameters(new List<ReportParameter>
             {
                 new ReportParameter("FechaDesde", startDate),
                 new ReportParameter("FechaHasta", endDate),
-                new ReportParameter("Logo", new Uri(Server.MapPath("~/img/logoPA.PNG")).AbsoluteUri)
+                //new ReportParameter("Logo", new Uri(Server.MapPath("~/img/logoPA.PNG")).AbsoluteUri)
             });
 
             viewer.DataSources.Add(source);
@@ -124,12 +124,12 @@ namespace Berry.Controllers
             viewer.ReportPath = Server.MapPath("~/Reports/DimmasVsSps/dimmasVsSps.rdlc");
             ReportDataSource source = new ReportDataSource("dmsvssps", tbl);
             source.Name = "dmsvssps";
-            viewer.EnableExternalImages = true;
+            //viewer.EnableExternalImages = true;
             viewer.SetParameters(new List<ReportParameter>
             {
                 new ReportParameter("FechaDesde", startDate),
                 new ReportParameter("FechaHasta", endDate),
-                new ReportParameter("Logo", new Uri(Server.MapPath("~/img/logoPA.PNG")).AbsoluteUri)
+                //new ReportParameter("Logo", new Uri(Server.MapPath("~/img/logoPA.PNG")).AbsoluteUri)
             });
 
             viewer.DataSources.Add(source);
